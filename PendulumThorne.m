@@ -10,7 +10,7 @@ syms m g L theta thetadot thetaddot T
 % $\sum F_n$
 eqn(1) = m*(L*thetadot^2) == T - m*g*cos(theta);
 % $\sum F_t$
-eqn(2) = (thetaddot) == (-m*g*sin(theta))/(m*L) - (165*10^-3)*thetadot*(abs(thetadot));
+eqn(2) = (thetaddot) == (-m*g*sin(theta))/(m*L) - (1.65*10^-3)*thetadot*(abs(thetadot));
 
 x = solve(eqn,[T,thetaddot]);
 
@@ -33,8 +33,8 @@ disp(mean_decay_rate)
 xlabel('Time, sec')
 ylabel('\theta, rad')
 hold on
-plot(TE,SE)
-plot(Time,exp(mean_decay_rate)*cos(Time*(2*pi)/mean_period_time),'-r')
+%plot(TE,SE)
+%plot(Time,exp(mean_decay_rate)*cos(Time*(2*pi)/mean_period_time),'-r')
 hold off
 
 bestfit = fit(TE,SE(:,1),'exp1')
