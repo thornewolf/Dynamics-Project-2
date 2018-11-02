@@ -37,6 +37,11 @@ plot(TE,SE)
 plot(Time,exp(mean_decay_rate)*cos(Time*(2*pi)/mean_period_time),'-r')
 hold off
 
+bestfit = fit(TE,SE(:,1),'exp1')
+hold on;
+plot(bestfit,TE,SE(:,1))
+hold off;
+
 function [value isterminal direction] = event(t,s)
     % value is a function that is zero at the event
     % isterminal is 1 if you desire to terminate integration at the event
