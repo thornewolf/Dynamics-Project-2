@@ -21,7 +21,7 @@ eom = odeFunction([thetadot;thetaEOM],[theta;thetadot],g,L,m);
 
 [Time,S,TE,SE,IE] = ode45(@(t,s)eom(t,s,c.g,c.L,c.m),linspace(0,100,1001),[(15*pi/180),0],options);
 
-figure
+figure(1)
 plot(Time,S(:,1),'-k')
 
 %x = ln(s)/t
@@ -30,8 +30,6 @@ omega_d = (2*pi/mean_period_time);
 
 xlabel('Time, sec')
 ylabel('\theta, rad')
-hold on
-hold off
 
 decayRate = mean(log(SE(2:end,1)./(SE(1:end-1,1)))./(TE(2:end)-TE(1:end-1)));
 
@@ -41,12 +39,16 @@ zeta(i) = ...
 sqrt((log(SE(i,1)./(15*pi/180)).^2)./((log(SE(i,1)./(15*pi/180)).^2)+(2*pi*i)^2) ...
 );
 end
-zeta = mean(zeta)
+zeta = mean(zeta);
+omega_n = omega_d/sqrt(1-zeta^2);
 
-omega_n = omega_d/sqrt(1-zeta^2)
-
-bestfit = fit(TE,SE(:,1),'exp1');
-
+theta_func = pi/12 .* exp(-zeta*omega_n.*Time) .* (zeta*omega_n/omega_d .* sin(omega_d.*Time)+cos(omega_d.*Time));
+%bestfit = fit(TE,SE(:,1),'exp1');
+figure(2)
+hold on
+plot(Time,S(:,1),'-k')
+plot(Time,theta_func,'-r')
+hold off
 function [value isterminal direction] = event(t,s)
     % value is a function that is zero at the event
     % isterminal is 1 if you desire to terminate integration at the event
