@@ -10,25 +10,23 @@ syms m g L theta thetadot thetaddot T
 % $\sum F_n$
 eqn(1) = m*(L*thetadot^2) == T - m*g*cos(theta);
 % $\sum F_t$
-eqn(2) = (thetaddot) == (-m*g*sin(theta))/(m*L) - (1.65*10^-3)*thetadot*(abs(thetadot));
+eqn(2) = (thetaddot)*(m*L) == (-m*g*sin(theta)) - (1.65*10^-3)*thetadot*(abs(thetadot));
 
 x = solve(eqn,[T,thetaddot]);
 
 syms theta(t) thetadot(t)
 thetaEOM = subs(x.thetaddot,{'theta','thetadot'},...
                {theta,thetadot});
-eom = odeFunction([thetadot;thetaEOM],[theta;thetadot],g,L);
+eom = odeFunction([thetadot;thetaEOM],[theta;thetadot],g,L,m);
 
-[Time,S,TE,SE,IE] = ode45(@(t,s)eom(t,s,c.g,c.L),linspace(0,100,1001),[(15*pi/180),0],options);
+[Time,S,TE,SE,IE] = ode45(@(t,s)eom(t,s,c.g,c.L,c.m),linspace(0,100,1001),[(15*pi/180),0],options);
 
 figure
 plot(Time,S(:,1),'-k')
 
 %x = ln(s)/t
-mean_period_time = mean(TE(2:end)-TE(1:end-1));
-mean_decay_rate = mean(log(SE(:,1))./TE);
-disp([Time,exp(mean_decay_rate)*cos(Time*(2*pi)/mean_period_time)])
-disp(mean_decay_rate)
+mean_period_time = mean(diff(TE));
+disp(2*pi/mean_period_time)
 
 xlabel('Time, sec')
 ylabel('\theta, rad')
@@ -37,9 +35,14 @@ hold on
 %plot(Time,exp(mean_decay_rate)*cos(Time*(2*pi)/mean_period_time),'-r')
 hold off
 
-bestfit = fit(TE,SE(:,1),'exp1')
+decayRate = mean(log(SE(2:end,1)./(SE(1:end-1,1)))./(TE(2:end)-TE(1:end-1)));
+%decayRate = log(SE(2,1)./(SE(1,1)))./(TE(2)-TE(1));
+
+
+bestfit = fit(TE,SE(:,1),'exp1');
 hold on;
-plot(bestfit,TE,SE(:,1))
+%plot(bestfit,TE,SE(:,1))
+%plot(Time,(15*pi/180)*exp(decayRate*Time),'-g');
 hold off;
 
 function [value isterminal direction] = event(t,s)

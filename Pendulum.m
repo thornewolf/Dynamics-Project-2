@@ -21,7 +21,6 @@ hold on;
 
 nat_freq = zeros(1,6);
 releaseAngle = [5,10,15,30,60,90];
-
 for i = 1:6
     j = releaseAngle(i);
     [Time,S,TE,SE,IE] = ode45(@(t,s)eom(t,s,c.g,c.L),linspace(0,10,1001),[(j*pi/180),0],options);
@@ -31,7 +30,7 @@ for i = 1:6
     nat_freq(i) = 2*pi / (TE(2))
 end 
 title('\theta vs Time');
-
+legend('show')
 
 figure(2)
 hold on
