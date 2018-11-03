@@ -26,24 +26,26 @@ plot(Time,S(:,1),'-k')
 
 %x = ln(s)/t
 mean_period_time = mean(diff(TE));
-disp(2*pi/mean_period_time)
+omega_d = (2*pi/mean_period_time);
 
 xlabel('Time, sec')
 ylabel('\theta, rad')
 hold on
-%plot(TE,SE)
-%plot(Time,exp(mean_decay_rate)*cos(Time*(2*pi)/mean_period_time),'-r')
 hold off
 
 decayRate = mean(log(SE(2:end,1)./(SE(1:end-1,1)))./(TE(2:end)-TE(1:end-1)));
-%decayRate = log(SE(2,1)./(SE(1,1)))./(TE(2)-TE(1));
 
+zeta = [];
+for i = 1:length(TE)
+zeta(i) = ...
+sqrt((log(SE(i,1)./(15*pi/180)).^2)./((log(SE(i,1)./(15*pi/180)).^2)+(2*pi*i)^2) ...
+);
+end
+zeta = mean(zeta)
+
+omega_n = omega_d/sqrt(1-zeta^2)
 
 bestfit = fit(TE,SE(:,1),'exp1');
-hold on;
-%plot(bestfit,TE,SE(:,1))
-%plot(Time,(15*pi/180)*exp(decayRate*Time),'-g');
-hold off;
 
 function [value isterminal direction] = event(t,s)
     % value is a function that is zero at the event
@@ -52,7 +54,6 @@ function [value isterminal direction] = event(t,s)
     % direction defines the slope of the function value at the event
     %      1 for positive slope, -1 for negative slope, 0 for either
     % event 1: max position    
-
     value = s(2);
     isterminal = false;
     direction = -1;
