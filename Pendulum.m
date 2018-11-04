@@ -44,13 +44,13 @@ xticklabels({'5\pi/180','\pi/18','\pi/12','\pi/6','\pi/3','\pi/2'})
 xtickangle(45)
 grid on
 legend('show')
-title('Natural Frequency (\omega_n) vs Inital Angle of Release (\theta_o)');
+legend('location', 'northoutside')
 
-% set(gcf, 'PaperPositionMode', 'manual');
-% set(gcf, 'PaperUnits', 'inches');
-% set(gcf, 'PaperPosition', [1 1 6 2]);
-% fig = gcf;
-% print('BestFitFigure','-dpdf');
+set(gcf, 'PaperPositionMode', 'manual');
+set(gcf, 'PaperUnits', 'inches');
+set(gcf, 'PaperPosition', [1 1 6 2.5]);
+fig = gcf;
+print('BestFitFigure','-dpdf');
 
 
 
