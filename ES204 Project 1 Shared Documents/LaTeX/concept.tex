@@ -1,0 +1,16 @@
+\usetikzlibrary{calc,patterns,angles,quotes}
+\begin{tikzpicture}
+    % save length of g-vector and theta to macros
+    \pgfmathsetmacro{\Gvec}{1.5}
+    \pgfmathsetmacro{\myAngle}{30}
+    % calculate lengths of vector components
+    \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
+    \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
+
+    \coordinate (centro) at (0,0);
+    \draw[dashed,gray,-] (centro) -- ++ (0,-3) node (mary) [black,below]{$ $};
+    \draw[thick] (centro) -- ++(270+\myAngle:3) coordinate (bob);
+    \pic [draw, ->, "$\theta$", angle eccentricity=1.5] {angle = mary--centro--bob};
+    \draw (bob) -- (centro) node[midway, above]{~~~L};
+    \filldraw [fill=black!40,draw=black] (bob) circle[radius=0.1];
+\end{tikzpicture}

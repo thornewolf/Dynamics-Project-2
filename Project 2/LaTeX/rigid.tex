@@ -1,0 +1,229 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage{pdfpages}
+% \usepackage{booktabs}
+\usepackage[export]{adjustbox}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage[numbered]{matlab-prettifier}
+\usepackage{circuitikz}
+\usepackage{xfrac}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usetikzlibrary{arrows}
+\graphicspath{{images/}}
+\usetikzlibrary{calc,patterns,angles,quotes}
+
+\allsectionsfont{\centering}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\setcounter{tocdepth}{5}
+
+\begin{document}
+
+\input{titlepage}
+\pagenumbering{roman}
+{\tableofcontents\let\clearpage\relax\listoffigures}
+\clearpage
+\pagenumbering{arabic}
+\newpage
+\begin{flushleft}
+% ---------------------------------------------------------------------------- %
+\section{Conceptualize the Problem}
+% ---------------------------------------------------------------------------- %
+
+\begin{figure}[h]
+  \begin{minipage}[c]{.4\textwidth}
+  \input{concept}
+\end{minipage}%
+\begin{minipage}[c]{.6\textwidth}
+  The pendulumn system consists of two rigid bars attached at their ends by a linear spring.
+\end{minipage}
+% \caption{Conceptualization of the Dynamic System}
+\end{figure}
+
+\subsection{Constants and Assumptions}
+\begin{tabular}{ll@{\hskip .75in}l}
+ \multicolumn{1}{c}{Constants:} && \multicolumn{1}{c}{Assumptions:} \\
+ Bar Mass: &$m$ = 0.25kg & Frictionless\\
+ Bar Length: &$L$ = 0.5m & Released from Rest\\
+ Gravity: &$g$ = 9.81$\sfrac{m}{s^2}$ &Rigid-Body Dynamics \\
+ Linear Spring: \\
+ \quad Spring Coefficient:& $k = 25~\sfrac{N}{m}$\\
+ \quad Unstretched Length:& $L$ \\
+\end{tabular}
+\vspace{5ex}
+
+We are asked to determine the following: \\
+\begin{enumerate}
+  \item The 6 Equations / 6 Unknowns for the system to solve for the Equations of Motion.
+  \item Integrate the Equations of Motion using various initial conditions.
+  \begin{enumerate}
+    \item $\theta_o = \sfrac{\pi}{12}~rad, \quad \phi_o = \sfrac{\pi}{12}~rad$
+    \item $\theta_o = \sfrac{-\pi}{12}~rad, \quad \phi_o = \sfrac{\pi}{12}~rad$
+    \item $\theta_o = \sfrac{\pi}{36}~rad, \quad \phi_o = \sfrac{\pi}{12}~rad$
+  \end{enumerate}
+  \item Linearize the Equations of Motion assuming small angular positions and velocities
+  (i.e. small angle approximation $\sin(x) \approx x,~\cos(x) \approx 1$)
+  \begin{itemize}
+    \item Determine the A matrix below.
+  \end{itemize}
+\end{enumerate}
+\begin{equation}
+\begin{bmatrix}
+  \ddot{\theta} \\
+  \ddot{\phi}
+\end{bmatrix}
+=
+\begin{bmatrix}
+A
+\end{bmatrix}
+\begin{bmatrix}
+\theta \\
+\phi
+\end{bmatrix}
+\nonumber
+\end{equation}
+\begin{enumerate}[resume]
+  \item Find the natural frequencies of the system and their respective eigenvectors
+  using the eigenvalues and eigenvectors of [A].
+  \item Using information from (5), solve for the analytical solution to the
+  linearized Equations of Motion and plot them for the initial conditions defined in (2).
+\end{enumerate}
+\newpage
+
+% ---------------------------------------------------------------------------- %
+\section{Free Body Diagram}
+% ---------------------------------------------------------------------------- %
+\begin{figure}[ht]
+   \begin{minipage}[c]{.25\textwidth}
+      \input{fbdleft}
+   \end{minipage}%
+   \begin{minipage}[c]{.5\textwidth}
+     \hfill
+     \begin{tabular}{rl}
+     $F_s$:&Force onto bar by the spring\\
+     $mg$:&Mass $\cdot$ gravity, weight of the bar\\
+     $G$:&Center of gravity of each bar\\
+     $\theta,~\phi$:& Angle of bar relative to vertical\\
+   \end{tabular}
+   \end{minipage}%
+  \begin{minipage}[c]{.25\textwidth}
+    \vspace{2.8ex}
+    \hspace{2ex}
+     \input{fbdright}
+  \end{minipage}
+\end{figure}
+
+\subsection*{Acceleration Diagram}
+\begin{figure}[ht]
+   \begin{minipage}[c]{.25\textwidth}
+      \input{adleft}
+   \end{minipage}%
+   \begin{minipage}[c]{.5\textwidth}
+     \begin{tabular}{rl}
+     $\alpha$:& $\ddot{\theta},~\ddot{\phi}$ respectively\\
+   \end{tabular}
+   \end{minipage}%
+  \begin{minipage}[c]{.25\textwidth}
+    % \vspace{2.8ex}
+    \hspace{2ex}
+     \input{adright}
+  \end{minipage}
+\end{figure}
+
+% ---------------------------------------------------------------------------- %
+\section{Coordinate Frame}
+% ---------------------------------------------------------------------------- %
+\begin{center}
+% \begin{figure}[ht]
+%    \begin{minipage}[c]{.35\textwidth}
+      \input{coord}
+%    \end{minipage}%
+%    \begin{minipage}[c]{.65\textwidth}
+%      \begin{tabular}{rl}
+       \input{normtan}
+%    \end{tabular}
+%    \end{minipage}
+% \end{figure}
+% \input{normtan}
+\end{center}
+% ---------------------------------------------------------------------------- %
+\section{Sum of Forces}
+% ---------------------------------------------------------------------------- %
+
+\begin{equation}
+  \sum Stuff
+\end{equation}
+Where: \\
+~\\
+\begin{tabular}{rl}
+$\theta$:& Position of the left bar. \\
+$\phi$:& Position of the right bar. \\
+$\dot{\theta}$:& Angular velocity of the left bar. \\
+$\ddot{\theta}$:& Angular acceleration of the left bar. \\
+$\dot{\phi}$:& Angular velocity of the right bar. \\
+$\ddot{\phi}$:& Angular acceleration of the right bar. \\
+m, L, g: & Are constants; mass, length of each bar, and gravity, respectively
+\end{tabular}
+% ---------------------------------------------------------------------------- %
+\section{Knowns and Unknowns} \label{knownsandunknowns}
+% ---------------------------------------------------------------------------- %
+\begin{tabular}{ll@{\hskip .75in}ll}
+  \multicolumn{1}{c}{Knowns:} && \multicolumn{1}{c}{Unknowns:} \\
+  Mass: &m = 0.142kg & String Tension: & T \\
+  String Length: &L = 0.5m & Angular Acceleration: & $\ddot{\theta}$ \\
+  Gravity: &g = 9.81$\sfrac{m}{s^2}$ \\
+  State Variables: \\
+  \quad Angular Velocity: &$\dot{\theta}$ & \\
+  \quad Angular Acceleration:&$\ddot{\theta}$ & \\
+\end{tabular}
+\vspace{2ex}
+\\
+
+% ---------------------------------------------------------------------------- %
+\section{Constraints}
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+\section{Solve for the Equations of Motion}
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+\section{Solve the Equations of Motion}
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+\section{Does it Make Sense?}
+% ---------------------------------------------------------------------------- %
+\subsection{Units}
+
+\subsection{Magnitude}
+
+\section{Appendix} \label{appendix}
+
+\subsection{Attributions}
+
+\onehalfspacing
+\begin{tabular}{ll}
+Jeffrey Chen & \\
+Thorne Wolfenbarger & \\
+Trey Dufrene & \\
+Joint Effort &
+\end{tabular}
+\singlespacing
+
+\subsection{Analytical Solution}
+
+\subsection{Numerical Solution} \label{appendix:numerical}
+
+
+\end{flushleft}
+\end{document}

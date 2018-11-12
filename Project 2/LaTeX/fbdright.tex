@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+
+  \pgfmathsetmacro{\Gvec}{1.5}
+  \pgfmathsetmacro{\myAngle}{30}
+
+  \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
+  \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
+
+  \coordinate (centro) at (0,0);
+  \draw[dashed,gray,-] (centro) -- ++ (0,-2) node (mary) [black,below]{$ $};
+  \draw[double distance = .75mm,line cap=round] (centro) -- ++(270+\myAngle:3) coordinate (bob);
+  \draw[->] (270+\myAngle:1.5) coordinate (g) -- ($(270+\myAngle:1.5) + (0,-1)$) coordinate (mg);
+  \draw ($(mg) + (.1,0)$) node[label=180:$mg$] {};
+  \draw (g) node[label=east:$G$] {};
+  \fill[black] (270+\myAngle:1.5) circle (0.03);
+  \pic [draw,->, "$\phi$", angle eccentricity=2] {angle = mary--centro--bob};
+
+  \fill[pattern = north east lines] ($ (centro) + (-1,0) $) rectangle ($ (centro) + (1,0.5) $);
+  \draw[thick] ($ (centro) + (-1,0) $) -- ($ (centro) + (1,0) $);
+
+  \fill[black] (centro) circle (0.075);
+
+  \draw[->] ($ (bob) + (0,-.05) $) -- ++(180:.75) coordinate (fs);
+  \draw (fs) node[label=south:$F_s$] {};
+
+\end{tikzpicture}

@@ -1,15 +1,19 @@
+% Declaring Constants
 c.g = 9.81; % ms/s^2
 c.m = 0.142; % kg
 c.L = .5; % m
 
 options = odeset('Events', @event);
 
+% Declaring Variables
 syms m g L theta thetadot thetaddot T
 
+% Our Equations of Motion (EOM)
 eqn(1) = m*(L*thetadot^2) == T - m*g*cos(theta);
 
 eqn(2) = (thetaddot) == (-m*g*sin(theta))/(m*L);
 
+% Solve our EOM and integrate it in ode45
 x = solve(eqn,[T,thetaddot]);
 
 syms theta(t) thetadot(t)
@@ -18,7 +22,8 @@ thetaEOM = subs(x.thetaddot,{'theta','thetadot'},...
 eom = odeFunction([thetadot;thetaEOM],[theta;thetadot],g,L);
 
 hold on;
-
+% Plotting our Data for Theta Time History for System With Drag at
+% different angles
 nat_freq = zeros(1,6);
 releaseAngle = [5,10,15,30,60,90];
 for i = 1:6
@@ -32,6 +37,7 @@ end
 title('\theta vs Time');
 legend('show')
 
+%Graph of natural frequencies
 figure(2)
 hold on
 plot(releaseAngle*pi/180,nat_freq, 'DisplayName', 'Measured Natural Frequency')
@@ -53,7 +59,7 @@ fig = gcf;
 print('BestFitFigure','-dpdf');
 
 
-
+% Event function
 function [value isterminal direction] = event(t,s)
     value = s(2);
     isterminal(1) = false;

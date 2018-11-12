@@ -35,11 +35,10 @@ set(gcf, 'PaperPosition', [1 1 6 2]);
 fig = gcf;
 print('ThetaVsTimeWithDrag','-dpdf');
 
+%Calculating omega_d, zeta, and omega_n
 mean_period_time = mean(diff(TE));
 omega_d = (2*pi/mean_period_time);
-
 decayRate = mean(log(SE(2:end,1)./(SE(1:end-1,1)))./(TE(2:end)-TE(1:end-1)));
-
 zeta = [];
 for i = 1:length(TE)
 zeta(i) = ...
@@ -48,10 +47,10 @@ sqrt((log(SE(i,1)./(15*pi/180)).^2)./((log(SE(i,1)./(15*pi/180)).^2)+(2*pi*i)^2)
 end
 zeta = mean(zeta);
 omega_n = omega_d/sqrt(1-zeta^2);
-
+% Theta in terms of omega_d, zeta, and omega_n
 theta_func = pi/12 .* exp(-zeta*omega_n.*Time) .* (zeta*omega_n/omega_d .* sin(omega_d.*Time)+cos(omega_d.*Time));
-%bestfit = fit(TE,SE(:,1),'exp1');
 figure(2)
+% Plotting Time vs theta
 xlabel('Time, sec')
 ylabel('\theta, rad')
 hold on
@@ -68,6 +67,7 @@ fig = gcf;
 print('CompareLinearAndNonLinear','-dpdf');
 
 figure(3)
+% Plotting Time vs theta on a short duration
 xlabel('Time, sec')
 ylabel('\theta, rad')
 hold on
@@ -85,7 +85,7 @@ set(gcf, 'PaperPosition', [1 1 6 2]);
 fig = gcf;
 print('CompareLinearAndNonLinearLast5Seconds','-dpdf');
 
-
+% Event function
 function [value isterminal direction] = event(t,s)
     % value is a function that is zero at the event
     % isterminal is 1 if you desire to terminate integration at the event

@@ -1,0 +1,20 @@
+\contentsline {section}{\numberline {1}Conceptualize the Problem}{2}
+\contentsline {subsection}{\numberline {1.1}Constants and Assumptions}{2}
+\contentsline {section}{\numberline {2}Free Body Diagram}{3}
+\contentsline {section}{\numberline {3}Coordinate Frame}{3}
+\contentsline {section}{\numberline {4}Sum of Forces}{3}
+\contentsline {section}{\numberline {5}Knowns and Unknowns}{4}
+\contentsline {section}{\numberline {6}Constraints}{4}
+\contentsline {section}{\numberline {7}Solve for the Equations of Motion}{4}
+\contentsline {section}{\numberline {8}Solve the Equations of Motion}{5}
+\contentsline {subsection}{\numberline {8.1}Without Drag}{5}
+\contentsline {subsection}{\numberline {8.2}With Drag}{6}
+\contentsline {section}{\numberline {9}Does it Make Sense?}{8}
+\contentsline {subsection}{\numberline {9.1}Units}{8}
+\contentsline {subsection}{\numberline {9.2}Magnitude}{9}
+\contentsline {section}{\numberline {10}Appendix}{10}
+\contentsline {subsection}{\numberline {10.1}Attributions}{10}
+\contentsline {subsection}{\numberline {10.2}Analytical Solution}{10}
+\contentsline {subsection}{\numberline {10.3}Numerical Solution}{11}
+\contentsline {subsubsection}{Without Drag}{11}
+\contentsline {subsubsection}{With Drag}{14}

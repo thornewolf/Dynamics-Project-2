@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+
+  \pgfmathsetmacro{\Gvec}{1.5}
+  \pgfmathsetmacro{\myAngle}{20}
+
+  \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
+  \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
+
+  \coordinate (centro) at (0,0);
+  \draw[dashed,gray,-] (centro) -- ++ (0,-2.5) node (mary) [black,below] {};
+  \draw[double distance = .75mm,line cap=round,gray] (centro) -- ++(270+\myAngle:3) coordinate (bob);
+
+  \draw[->] (centro) -- ++(270+\myAngle:-1) coordinate (normL);
+  \draw (normL) node[label={[label distance=-2mm]110:$\hat{e_{n_{\theta}}}$}] {};
+  \draw[->] (centro) -- ++(20:1) coordinate (tanL);
+  \draw (tanL) node[label=$\hat{e_{t_{\theta}}}$] {};
+  \pic [draw,->, "${\theta}$", angle eccentricity=2.5] {angle = mary--centro--bob};
+
+
+
+  \pgfmathsetmacro{\Gvec}{1.5}
+  \pgfmathsetmacro{\myAngle}{30}
+
+  \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
+  \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
+
+  \coordinate (centro) at (3,0);
+  \draw[dashed,gray,-] (centro) -- ++ (0,-2.5) node (mary) [black,below] {};
+  \draw[double distance = .75mm,line cap=round,gray] (centro) -- ++(270+\myAngle:3) coordinate (bob);
+
+  \draw[->] (centro) -- ++(270+\myAngle:-1) coordinate (normR);
+  \draw (normR) node[label=$\hat{e_{n_{\phi}}}$] {};
+  \draw[->] (centro) -- ++(30:1) coordinate (tanR);
+  \draw (tanR) node[label=$\hat{e_{t_{\phi}}}$] {};
+
+  \pic [draw,->, "${\phi}$", angle eccentricity=2.5] {angle = mary--centro--bob};
+
+
+
+  \draw [->,gray] (0,0) -- ++ (0:4) coordinate (x);
+  \draw [->,gray] (0,0) -- ++ (90:1.5) coordinate (y);
+  \draw (x) node[label=0:$x$] {};
+  \draw (y) node[label=90:$y$] {};
+  \fill[black] (centro) circle (0.05);
+  \fill[black] (0,0) circle (0.05);
+\end{tikzpicture}

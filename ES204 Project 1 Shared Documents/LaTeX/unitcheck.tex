@@ -1,0 +1,22 @@
+\begin{lstlisting}[frame=lines,style=Matlab-editor]
+% Checking EOM Units
+u = symunit;
+m = m*u.kg;
+g = g*u.m/u.s^2;
+L = L*u.m;
+fdrag = fdrag*u.kg*u.m;
+theta = 'theta';
+thetadot = 'thetadot'/u.s;
+thetaddot = 'thetaddot'/u.s^2;
+T = T*u.N;
+eqn = subs(eqn);
+checkUnits(eqn)
+EOM = subs(x.thetaddot);
+\end{lstlisting}
+\color{gray} \begin{verbatim}
+unitCheck =
+  struct with fields:
+
+    Consistent: [1 1]
+    Compatible: [1 1]
+\end{verbatim} \color{black}

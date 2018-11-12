@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    % save length of g-vector and theta to macros
+    \pgfmathsetmacro{\Gvec}{1.5}
+    \pgfmathsetmacro{\myAngle}{30}
+    % calculate lengths of vector components
+    \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
+    \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
+
+    \coordinate (centro) at (0,0);
+    \coordinate (bob) at (270+\myAngle:3);
+    \draw [black,-stealth] (bob) -- ($(bob)!\Gcos cm!(centro)$)
+      coordinate (T)
+      node[above] {$\hat{e_n}$};
+    \draw [-stealth] (bob) -- ($(bob)!\Gsin cm!-90:(centro)$)
+      coordinate (gsin)
+      node[above] {$\hat{e_t}$};
+      \phantom{
+        \draw [-stealth] (bob) -- ++(0,-\Gvec)
+          coordinate (g)
+          node[near end,left] {$mg$};
+        }
+    \filldraw [fill=black!40,draw=black] (bob) circle[radius=0.1];
+\end{tikzpicture}

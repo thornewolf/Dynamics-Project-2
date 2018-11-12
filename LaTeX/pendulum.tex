@@ -1,0 +1,371 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage{pdfpages}
+% \usepackage{booktabs}
+\usepackage[export]{adjustbox}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage[numbered]{matlab-prettifier}
+\usepackage{circuitikz}
+\usepackage{xfrac}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{amsmath}
+
+
+\usetikzlibrary{arrows}
+\graphicspath{{images/}}
+\usetikzlibrary{calc,patterns,angles,quotes}
+
+\allsectionsfont{\centering}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\begin{document}
+
+\input{titlepage}
+\tableofcontents{}
+\newpage
+\begin{flushleft}
+% ---------------------------------------------------------------------------- %
+\section{Conceptualize the Problem}
+% ---------------------------------------------------------------------------- %
+
+The first step to solving the problem is to conceptualize the system and understand what is being asked for. The idealized pendulum is a 1 degree of freedom (DOF) problem, and the best coordinate system to model the system is either normal-tangential ($\hat{e}_n,\hat{e}_t$) or polar ($\hat{e}_r,\hat{e}_\theta$); this way the position of the mass is easily shown using only one variable, $\theta$, and since most of the forces act tangentially on the mass, calculations made later will be less strenuous. We will be using a normal-tangential coordinate system.
+
+\subsection{Constants and Assumptions}
+
+\begin{figure}[h]
+  \centering
+   \begin{minipage}[c]{.2\textwidth}
+      \input{concept}
+   \end{minipage}%
+   \begin{minipage}[c]{.8\textwidth}
+     \begin{tabular}{ll@{\hskip .75in}l}
+       \multicolumn{1}{c}{Constants:} && \multicolumn{1}{c}{Assumptions:} \\
+       Mass: &m = 0.142kg & Frictionless\\
+       String Length: &L = 0.5m & Released from Rest\\
+       Gravity: &g = 9.81$\sfrac{m}{s^2}$ & Particle Dynamics\\
+     \end{tabular}
+   \end{minipage}
+ \end{figure}
+
+The system is released from rest at various initial angles of release:
+$$\theta_o = 5^\circ,10^\circ, 15^\circ, 30^\circ, 60^\circ, \textrm{and}~90^\circ$$
+Drag force is defined as
+\begin{equation} \label{eq:drag}
+\bar{F}_{Drag}=\frac{1}{2}\rho C_DAV^2\left(-\hat{V}\right)=-1.65 \cdot10^{-3}\dot{\theta}|\dot{\theta}|\hat{e_t}
+\end{equation}
+We are also asked to determine the following: \\
+\begin{equation}
+\textrm{With and Without Drag\quad}\left\{
+\begin{array}{ll}
+  \textrm{Equations of Motion}& \\
+  \textrm{Natural Frequency } &\hspace{10ex}\omega_n\hspace{1.5ex} \\
+\end{array}
+\nonumber
+\right.
+\end{equation}
+\begin{equation}
+\textrm{\phantom{and Without}With Drag\quad}\left\{
+\begin{array}{ll}
+  \textrm{$2^{nd}$ Order Diff. Eq. of Motion} & \\
+  \textrm{Damped Natural Frequency } &\omega_d \\
+  \textrm{The Damping Ratio} & \zeta \\
+  \textrm{The Decay Rate} & \zeta\omega_n \\
+\end{array}
+\right.
+\nonumber
+\end{equation}
+\newpage
+
+% ---------------------------------------------------------------------------- %
+\section{Free Body Diagram}
+% ---------------------------------------------------------------------------- %
+
+\begin{figure}[ht]
+  \centering
+   \begin{minipage}[c]{.2\textwidth}
+      \input{fbd}
+   \end{minipage}%
+   \begin{minipage}[c]{.8\textwidth}
+     \flushleft
+     \begin{tabular}{rl}
+     $f_{Drag}$:&Drag force$^*$ acting against the velocity of the mass (-$\hat{v}$)\\
+     $mg$:&Mass $\cdot$ gravity, the weight of the object\\
+     $T$:&The tension in the string\\
+   \end{tabular}
+     \footnotetext{$^*$Modeled by Eq.(\ref{eq:drag})}
+   \end{minipage}
+ \end{figure}
+
+% ---------------------------------------------------------------------------- %
+\section{Coordinate Frame}
+% ---------------------------------------------------------------------------- %
+
+\begin{figure}[h]
+  \centering
+   \begin{minipage}[c]{.15\textwidth}
+      \input{ad}
+   \end{minipage}%
+   \begin{minipage}[c]{.85\textwidth}
+     \flushleft
+     \begin{tabular}{rl}
+      $\hat{e}_n$:&+ Pointing at the centroidal point about which the system rotates\\
+      $\hat{e}_t$:&+ Pointing in the direction that represents counterclockwise \\
+      & \phantom{+ }tangential movement about the centroidal point \\
+    \end{tabular}
+   \end{minipage}
+ \end{figure}
+We determined the positive direction for the coordinate system based on planar dynamics
+conventions.
+% ---------------------------------------------------------------------------- %
+\section{Sum of Forces}
+% ---------------------------------------------------------------------------- %
+
+$$\sum\bar{F}=m\bar{a}_{cm}$$
+Since we are using a normal-tangential coordinate system,
+$$
+\bar{a}_{cm} =
+\begin{bmatrix}
+r\dot{\theta}^2\\
+r\ddot{\theta}
+\end{bmatrix}
+$$
+There are no moments in this problem that are accounted for. \\
+~\\
+Without drag:
+\center{Sum of the forces in the normal direction,}
+\begin{equation} \label{eq:fn}
+\sum F_n = -mg\cos(\theta) + m(L\dot{\theta}^2) = 0
+\end{equation}
+\center{Sum of the forces in the tangential direction.}
+\begin{equation} \label{eq:ft}
+\sum F_t = m(L\ddot{\theta}) - mg\sin(\theta) = 0
+\end{equation}
+\newpage
+\flushleft {With drag:\\}
+\center{Sum of the forces in the normal direction,}
+\begin{equation} \label{}
+\sum F_n = -mg\cos(\theta) + m(L\dot{\theta}^2) = 0
+\end{equation}
+\center{Sum of the forces in the tangential direction.}
+\begin{equation}
+\sum F_t = m(L\ddot{\theta}) - mg\sin(\theta) - F_{Drag} = 0
+\end{equation}
+\flushleft
+Where: \\
+~\\
+\begin{tabular}{rl}
+$F_n$:& Denotes the forces acting in the normal direction. \\
+$F_t$:& Denotes the forces acting in the tangential direction. \\
+$\theta$:& Position of the mass. \\
+$\dot{\theta}$:& Angular velocity of the mass. \\
+$\ddot{\theta}$:& Angular acceleration of the mass. \\
+m, L, g: & Are constants; mass, length of string, and gravity, respectively
+\end{tabular}
+% ---------------------------------------------------------------------------- %
+\section{Knowns and Unknowns} \label{knownsandunknowns}
+% ---------------------------------------------------------------------------- %
+\begin{tabular}{ll@{\hskip .75in}ll}
+  \multicolumn{1}{c}{Knowns:} && \multicolumn{1}{c}{Unknowns:} \\
+  % Knowns: && Unknowns: &\\
+  Mass: &m = 0.142kg & String Tension: & T \\
+  String Length: &L = 0.5m & Angular Acceleration: & $\ddot{\theta}$ \\
+  Gravity: &g = 9.81$\sfrac{m}{s^2}$ \\
+  State Variables: \\
+  \quad Angular Velocity: &$\dot{\theta}$ & \\
+  \quad Angular Acceleration:&$\ddot{\theta}$ & \\
+\end{tabular}
+\vspace{2ex}
+\\
+The angular velocity and position state variables are associated with the angular
+acceleration, so they are considered known since they can be obtained from the
+acceleration using integration. Therefore we have two equations of motion
+(\ref{eq:fn}) \& (\ref{eq:ft}) and two unknowns (T and $\ddot{\theta}$).
+% ---------------------------------------------------------------------------- %
+\section{Constraints}
+% ---------------------------------------------------------------------------- %
+Because there are as many unknowns as there are equations, constraints are not needed
+in this problem. \\
+% ---------------------------------------------------------------------------- %
+\section{Solve for the Equations of Motion}
+% ---------------------------------------------------------------------------- %
+The equations of motion for a simple pendulum are
+ (from Eq. (\ref{eq:fn}) and (\ref{eq:ft}))
+\begin{equation} \label{eq:pen}
+\ddot{\theta} = -\frac{g}{L}\sin(\theta)
+\end{equation}
+\center and
+\begin{equation} \label{eq:T}
+T = mg\cos(\theta) + mL\dot{\theta}^2
+\end{equation}
+Whereas with drag, the only difference is in Eq. (\ref{eq:pen}); plugging in
+the drag force representation (from Eq. (\ref{eq:drag}))
+\begin{equation}\label{eq:drageom}
+  \ddot{\theta} = -\frac{g}{L}\sin(\theta) - \frac{1.65 \cdot 10^{-3}\dot{\theta}|\dot{\theta}|}{mL}
+\end{equation}
+% ---------------------------------------------------------------------------- %
+\section{Solve the Equations of Motion}
+% ---------------------------------------------------------------------------- %
+\subsection{Without Drag}
+\flushleft
+Taking Equation (\ref{eq:pen}),
+$$\ddot{\theta} = -\frac{g}{L}\sin(\theta)$$
+We can integrate the differential equation using MATLAB and plot the behavior of
+$\theta$ versus time for various release angles. (Figure (\ref{fig:thetatime})) \\
+\begin{figure}[h]
+\begin{minipage}[c]{.85\textwidth}
+  \includegraphics[center,width=.9\textwidth]{theta}
+\end{minipage}%
+\begin{minipage}[c]{.15\textwidth}
+  \includegraphics[frame,center]{thetalegend}
+  \vspace{1ex}
+\end{minipage}
+  \caption{$\theta$ vs Time For Various Initial Release Angles}
+  \label{fig:thetatime}
+\end{figure}
+~\\
+Using the small angle approximation ($\sin(\theta)\approx\theta$), we can rewrite
+Equation (\ref{eq:pen}) as
+$$\ddot{\theta} = -\frac{g}{L}\theta$$
+Letting $\theta(t) = A\cdot e^{st}$, then $\ddot{\theta} = s^2 \cdot A \cdot e^{st}$;
+solving the second order differential equation analytically yields
+$$\theta(t) = \theta_o\cos(\sqrt{\frac{g}{L}t})$$
+Where
+$$\sqrt{\frac{g}{L}} = \omega_n$$
+\begin{figure}[ht]
+  \includegraphics[center,width=.9\textwidth]{natfreq}
+  \caption{Natural Frequency ($\omega_n$) vs Initial Angle of Release ($\theta_o$)}
+  \label{fig:freq}
+\end{figure}
+\newpage
+As shown in Figure (\ref{fig:freq}), using the small angle approximation has very
+little effect on the calculation of the natural frequency of the system, especially
+when $\theta_o$ is smaller in magnitude; later on when the small angle
+approximation is used to represent the system with drag incorporated, the initial
+angle of release, $\theta_o$, is $\sfrac{\pi}{12}$. As seen in Figure (\ref{fig:freq}),
+the value of $\omega_n$ at $\sfrac{\pi}{12}$ using the approximation is very
+close to the actual frequency of the system.
+
+\subsection{With Drag}
+Using Equation (\ref{eq:drageom})
+$$
+\ddot{\theta} = -\frac{g}{L}\sin(\theta) - \frac{1.65 \cdot 10^{-3}\dot{\theta}|\dot{\theta}|}{mL}
+$$
+We can integrate and plot the differential equation over a 100 second period. \\
+\begin{figure}[ht]
+  \includegraphics[center]{thetadrag}
+  \caption{$\theta$ vs Time with Drag}
+  \label{fig:thetadrag}
+\end{figure}
+We can see the amplitude of the pendulum oscillations decreasing over time.
+We then determine the second order differential equation that correctly models
+the system with drag to be.
+$$\ddot{\theta}+2\zeta\omega_n\dot{\theta}+\omega_n^2\theta=0$$
+Solving the second order differential equation we produce,
+\begin{equation} \label{eq:thetat}
+\theta(t)=e^{-\zeta\omega_nt}(A\cos(\omega_dt)+B\sin(\omega_dt))
+\end{equation}
+When $\theta(0)$ and $\dot{\theta}(0)$ are evaluated they yield the equation
+$$-\zeta\omega_nB+\omega_dA=0 \quad\therefore\quad A=\frac{\zeta\omega_nB}{\omega_d}$$
+Plugging A and B into (\ref{eq:thetat}), the equation can be rewritten as
+\begin{equation} \label{eq:thetat_verbose}
+\theta(t)=\frac{\pi}{12}e^{-\zeta\omega_nt}\left(\frac{\zeta\omega_n}{\omega_d}\sin(\omega_dt)+\cos(\omega_dt)\right)
+\end{equation}
+\newpage
+We then compare the plots of $\theta$ vs. Time from (Eq. \ref{eq:thetat_verbose}) and our EOM.\\
+\begin{figure}[ht]
+  \includegraphics[center]{compare}
+  \caption{$\theta$ vs Time with Drag}
+\end{figure}
+Examining the plot more closely we can see that the Linear EOM Approximation is very close to the plot generated by the non-linear EOM. Plotting the last 5 seconds
+produces figure 5.
+\begin{figure}[ht]
+  \includegraphics[center]{compareclose}
+  \caption{$\theta$ vs Time with Drag}
+\end{figure}
+\newpage
+% ---------------------------------------------------------------------------- %
+\section{Does it Make Sense?}
+% ---------------------------------------------------------------------------- %
+\subsection{Units}
+EOM without drag (from (\ref{eq:pen})):
+$$
+\ddot{\theta} = -\frac{g}{L}\sin(\theta) \quad = \quad
+\frac{\frac{\cancel{m}}{s^2}}{\cancel{m}}\cdot rad = \frac{rad}{s^2}
+$$
+Similarly, with the small angle approximation,
+$$
+\ddot{\theta} = -\frac{g}{L}(\theta) \quad = \quad
+\frac{\frac{\cancel{m}}{s^2}}{\cancel{m}}\cdot rad = \frac{rad}{s^2}
+$$
+Looking at the EOM with drag (from (\ref{eq:drageom})), since the final units still need to come out to $\sfrac{rad}{s^2}$, the drag term must have the units kg $\cdot$ m in order to cancel out: \\
+$$
+\ddot{\theta} = -\frac{g}{L}\sin(\theta) - \frac{1.65 \cdot 10^{-3}\dot{\theta}|\dot{\theta}|}{mL} \quad = \quad
+\frac{\frac{\cancel{m}}{s^2}}{\cancel{m}} \cdot rad - \frac{\cancel{kg} \cdot \cancel{m}\cdot \sfrac{rad}{s^2}}{\cancel{kg}\cdot\cancel{m}}
+=
+\frac{rad}{s^2}
+$$
+~\\
+Checking with the MATLAB symbolic units tool (from Section \ref{appendix:numerical}): \\
+~\\
+% \input{unitcheck}
+\newpage
+\subsection{Magnitude}
+Without Drag: \\
+~\\
+Looking at Figure (\ref{fig:thetatime}), the amplitude of the oscillations show no
+deterioration, which is consistent for a system with no outside forces (such as drag).
+As the initial angle of realease ($\theta_o$) and the period of ocsillations increase, the
+natural frequency ($\omega_n$) decreases, which makes physical sense. Also, as seen in
+Figure (\ref{fig:freq}), the natural frequency of the system with small initial angles
+show that the small angle approximation ($\sin(\theta) \approx \theta$) is valid,
+because they approach $\sqrt{\frac{g}{L}}$ ($\omega_n$ with $\sin(\theta) \approx \theta$).
+
+~\\
+With Drag: \\
+~\\
+Now, looking at Figure (\ref{fig:thetadrag}), we can see that the amplitude of the
+oscillations is slowly decreasing over time, showing a loss in energy due to the
+drag component included the system. The natural frequency ($\omega_n$) and the damped
+natural frequency ($\omega_d$) are very close in magnitude. This makes physical sense because
+the damping ratio ($\zeta$) is very small, and will only affect the system in small increments.
+
+~\\
+Signs: \\
+~\\
+Given the coordinate system discussed in Section (\ref{knownsandunknowns}) and the
+equations of motion with and without drag, (\ref{eq:pen}) \& (\ref{eq:drageom}), \\
+When $\theta > 0$
+\newpage
+\section{Appendix} \label{appendix}
+
+\subsection{Attributions}
+
+\onehalfspacing
+\begin{tabular}{ll}
+Jeffrey Chen & Conceptualization, Solving Damped/Natural Frequencies\\
+Thorne Wolfenbarger & Solving Damped/Natural Frequencies, Write-up\\
+Trey Dufrene & Free Body/Coordinate System, Step 9, Write-up\\
+Joint Effort & MATLAB Coding, Solving EOM's
+\end{tabular}
+\singlespacing
+
+\subsection{Analytical Solution}
+
+\newpage
+
+\subsection{Numerical Solution} \label{appendix:numerical}
+\subsubsection{Without Drag}
+\input{matlabnodrag}
+\newpage
+\subsubsection{With Drag}
+\input{matlabwithdrag}
+
+\end{flushleft}
+\end{document}

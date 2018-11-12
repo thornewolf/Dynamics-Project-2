@@ -1,0 +1,224 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Pendulum</title><meta name="generator" content="MATLAB 9.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-11-03"><meta name="DC.source" content="Pendulum.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">c.g = 9.81; <span class="comment">% ms/s^2</span>
+c.m = 0.142; <span class="comment">% kg</span>
+c.L = .5; <span class="comment">% m</span>
+
+options = odeset(<span class="string">'Events'</span>, @event);
+
+syms <span class="string">m</span> <span class="string">g</span> <span class="string">L</span> <span class="string">theta</span> <span class="string">thetadot</span> <span class="string">thetaddot</span> <span class="string">T</span>
+
+eqn(1) = m*(L*thetadot^2) == T - m*g*cos(theta);
+
+eqn(2) = (thetaddot) == (-m*g*sin(theta))/(m*L);
+
+x = solve(eqn,[T,thetaddot]);
+
+syms <span class="string">theta(t)</span> <span class="string">thetadot(t)</span>
+thetaEOM = subs(x.thetaddot,{<span class="string">'theta'</span>,<span class="string">'thetadot'</span>},<span class="keyword">...</span>
+               {theta,thetadot});
+eom = odeFunction([thetadot;thetaEOM],[theta;thetadot],g,L);
+
+hold <span class="string">on</span>;
+
+nat_freq = zeros(1,6);
+releaseAngle = [5,10,15,30,60,90];
+<span class="keyword">for</span> i = 1:6
+    j = releaseAngle(i);
+    [Time,S,TE,SE,IE] = ode45(@(t,s)eom(t,s,c.g,c.L),linspace(0,10,1001),[(j*pi/180),0],options);
+    plot(Time,S(:,1),<span class="string">'DisplayName'</span>, [<span class="string">'\theta_o = '</span> num2str(j) <span class="string">'^o'</span>]);
+    xlabel(<span class="string">'Time, sec'</span>);
+    ylabel(<span class="string">'\theta, rad'</span>);
+    nat_freq(i) = 2*pi / (TE(2))
+<span class="keyword">end</span>
+title(<span class="string">'\theta vs Time'</span>);
+legend(<span class="string">'show'</span>)
+
+figure(2)
+hold <span class="string">on</span>
+plot(releaseAngle*pi/180,nat_freq, <span class="string">'DisplayName'</span>, <span class="string">'Measured Natural Frequency'</span>)
+line([0  90].*pi/180, [sqrt(c.g/c.L),sqrt(c.g/c.L)],<span class="string">'Color'</span>,<span class="string">'red'</span>,<span class="string">'LineStyle'</span>,<span class="string">'--'</span>,<span class="keyword">...</span>
+    <span class="string">'DisplayName'</span>,[<span class="string">'Small Angle Approximation Natural Frequency'</span>])
+xlabel(<span class="string">'\theta_o, rad'</span>);
+ylabel(<span class="string">'\omega_n, rad/s'</span>);
+xticks([5*pi/180 pi/18 pi/12 pi/6 pi/3 pi/2])
+xticklabels({<span class="string">'5\pi/180'</span>,<span class="string">'\pi/18'</span>,<span class="string">'\pi/12'</span>,<span class="string">'\pi/6'</span>,<span class="string">'\pi/3'</span>,<span class="string">'\pi/2'</span>})
+xtickangle(45)
+grid <span class="string">on</span>
+legend(<span class="string">'show'</span>)
+title(<span class="string">'Natural Frequency (\omega_n) vs Inital Angle of Release (\theta_o)'</span>);
+
+<span class="comment">% set(gcf, 'PaperPositionMode', 'manual');</span>
+<span class="comment">% set(gcf, 'PaperUnits', 'inches');</span>
+<span class="comment">% set(gcf, 'PaperPosition', [1 1 6 2]);</span>
+<span class="comment">% fig = gcf;</span>
+<span class="comment">% print('BestFitFigure','-dpdf');</span>
+
+
+
+<span class="keyword">function</span> [value isterminal direction] = event(t,s)
+    value = s(2);
+    isterminal(1) = false;
+    direction(1) = -1;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">
+nat_freq =
+
+    4.4278         0         0         0         0         0
+
+
+nat_freq =
+
+    4.4278    4.4215         0         0         0         0
+
+
+nat_freq =
+
+    4.4278    4.4215    4.4110         0         0         0
+
+
+nat_freq =
+
+    4.4278    4.4215    4.4110    4.3543         0         0
+
+
+nat_freq =
+
+    4.4278    4.4215    4.4110    4.3543    4.1292         0
+
+
+nat_freq =
+
+    4.4278    4.4215    4.4110    4.3543    4.1292    3.7578
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2018a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+c.g = 9.81; % ms/s^2
+c.m = 0.142; % kg
+c.L = .5; % m
+
+options = odeset('Events', @event);
+
+syms m g L theta thetadot thetaddot T
+
+eqn(1) = m*(L*thetadot^2) == T - m*g*cos(theta);
+
+eqn(2) = (thetaddot) == (-m*g*sin(theta))/(m*L);
+
+x = solve(eqn,[T,thetaddot]);
+
+syms theta(t) thetadot(t)
+thetaEOM = subs(x.thetaddot,{'theta','thetadot'},...
+               {theta,thetadot});
+eom = odeFunction([thetadot;thetaEOM],[theta;thetadot],g,L);
+
+hold on;
+
+nat_freq = zeros(1,6);
+releaseAngle = [5,10,15,30,60,90];
+for i = 1:6
+    j = releaseAngle(i);
+    [Time,S,TE,SE,IE] = ode45(@(t,s)eom(t,s,c.g,c.L),linspace(0,10,1001),[(j*pi/180),0],options);
+    plot(Time,S(:,1),'DisplayName', ['\theta_o = ' num2str(j) '^o']);
+    xlabel('Time, sec');
+    ylabel('\theta, rad');
+    nat_freq(i) = 2*pi / (TE(2))
+end 
+title('\theta vs Time');
+legend('show')
+
+figure(2)
+hold on
+plot(releaseAngle*pi/180,nat_freq, 'DisplayName', 'Measured Natural Frequency')
+line([0  90].*pi/180, [sqrt(c.g/c.L),sqrt(c.g/c.L)],'Color','red','LineStyle','REPLACE_WITH_DASH_DASH',...
+    'DisplayName',['Small Angle Approximation Natural Frequency'])
+xlabel('\theta_o, rad');
+ylabel('\omega_n, rad/s');
+xticks([5*pi/180 pi/18 pi/12 pi/6 pi/3 pi/2])
+xticklabels({'5\pi/180','\pi/18','\pi/12','\pi/6','\pi/3','\pi/2'})
+xtickangle(45)
+grid on
+legend('show')
+title('Natural Frequency (\omega_n) vs Inital Angle of Release (\theta_o)');
+
+% set(gcf, 'PaperPositionMode', 'manual');
+% set(gcf, 'PaperUnits', 'inches');
+% set(gcf, 'PaperPosition', [1 1 6 2]);
+% fig = gcf;
+% print('BestFitFigure','-dpdf');
+
+
+
+function [value isterminal direction] = event(t,s)
+    value = s(2);
+    isterminal(1) = false;
+    direction(1) = -1;
+end
+##### SOURCE END #####
+--></body></html>
