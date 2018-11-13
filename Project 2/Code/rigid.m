@@ -55,7 +55,8 @@ eqn(5) = m*(l/2)*phiddot == Fs_tP + Ct - m*g*sin(phi);
 eqn(6) = -(l/2)*(m*g*sin(phi)) + (Fs_tP)*(l) == (1/3)*m*(l^2)*phiddot;
 
 x = solve(eqn,[thetaddot,phiddot,An,At,Cn,Ct]);
-
+x.thetaddot
+x.phiddot
 syms theta(t) thetadot(t) phi(t) phidot(t)
 
 thetaEOM = subs(x.thetaddot, {'theta', 'thetadot'}, {theta, thetadot});
@@ -72,17 +73,18 @@ for i = 1:3
     figure
     hold on
     grid on
-    title('\theta and \phi vs Time')
+%     title('\theta and \phi vs Time')
     xlabel('Time, sec')
     ylabel('Angular Position, rad')
     plot(T,S(:,1),'DisplayName', ['\theta_o = ' num2str(rad2deg(theta_o(i))) '^o'])
     plot(T,S(:,3),'DisplayName', '\phi_o = 15^o')
+    legend('location', 'northoutside')
     legend('show')
-%     set(gcf, 'PaperPositionMode', 'manual');
-%     set(gcf, 'PaperUnits', 'inches');
-%     set(gcf, 'PaperPosition', [1 1 6 2.5]);
-%     fig = gcf;
-%     print(['BestFitFigure' num2str(i)],'-dpdf');
+    set(gcf, 'PaperPositionMode', 'manual');
+    set(gcf, 'PaperUnits', 'inches');
+    set(gcf, 'PaperPosition', [1 1 6 2.5]);
+    fig = gcf;
+    print(['BestFitFigure' num2str(i)],'-dpdf');
 end
 
 

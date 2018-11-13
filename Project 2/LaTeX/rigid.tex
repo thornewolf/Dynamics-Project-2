@@ -17,6 +17,8 @@
 \usepackage{amsmath}
 \usepackage{enumitem}
 
+\newcommand{\eqname}[1]{\tag*{#1}}% Tag equation with name
+
 \usetikzlibrary{arrows}
 \graphicspath{{images/}}
 \usetikzlibrary{calc,patterns,angles,quotes}
@@ -52,11 +54,11 @@
 \subsection{Constants and Assumptions}
 \begin{tabular}{ll@{\hskip .75in}l}
  \multicolumn{1}{c}{Constants:} && \multicolumn{1}{c}{Assumptions:} \\
- Bar Mass: &$m$ = 0.25kg & Frictionless\\
+ Bar Mass: &$m$ = 0.25kg & No Losses\\
  Bar Length: &$L$ = 0.5m & Released from Rest\\
- Gravity: &$g$ = 9.81$\sfrac{m}{s^2}$ &Rigid-Body Dynamics \\
- Linear Spring: \\
- \quad Spring Coefficient:& $k = 25~\sfrac{N}{m}$\\
+ Gravity: &$g$ = 9.81$\sfrac{m}{s^2}$ &Slender Bars \\
+ Linear Spring: &&Rigid-Body Dynamics\\
+ \quad Spring Coefficient:& $k = 25~\sfrac{N}{m}$ & Planar\\
  \quad Unstretched Length:& $L$ \\
 \end{tabular}
 \vspace{5ex}
@@ -103,19 +105,21 @@ A
 \section{Free Body Diagram}
 % ---------------------------------------------------------------------------- %
 \begin{figure}[ht]
-   \begin{minipage}[c]{.25\textwidth}
+   \begin{minipage}[c]{.225\textwidth}
       \input{fbdleft}
    \end{minipage}%
-   \begin{minipage}[c]{.5\textwidth}
-     \hfill
+   \begin{minipage}[c]{.55\textwidth}
+     \center
      \begin{tabular}{rl}
      $F_s$:&Force onto bar by the spring\\
-     $mg$:&Mass $\cdot$ gravity, weight of the bar\\
+     $mg$:&Mass $\cdot$ gravity, weight of each bar\\
      $G$:&Center of gravity of each bar\\
      $\theta,~\phi$:& Angle of bar relative to vertical\\
+     $A_n,~C_n$:& Reaction forces in the normal \\ & direction \\
+     $A_t,~C_t$:& Reaction forces in the tangential \\ & direction \\
    \end{tabular}
    \end{minipage}%
-  \begin{minipage}[c]{.25\textwidth}
+  \begin{minipage}[c]{.225\textwidth}
     \vspace{2.8ex}
     \hspace{2ex}
      \input{fbdright}
@@ -128,6 +132,7 @@ A
       \input{adleft}
    \end{minipage}%
    \begin{minipage}[c]{.5\textwidth}
+     \center
      \begin{tabular}{rl}
      $\alpha$:& $\ddot{\theta},~\ddot{\phi}$ respectively\\
    \end{tabular}
@@ -142,26 +147,40 @@ A
 % ---------------------------------------------------------------------------- %
 \section{Coordinate Frame}
 % ---------------------------------------------------------------------------- %
-\begin{center}
-% \begin{figure}[ht]
-%    \begin{minipage}[c]{.35\textwidth}
+
+    \begin{minipage}[c]{.5\textwidth}
+      \center
       \input{coord}
-%    \end{minipage}%
-%    \begin{minipage}[c]{.65\textwidth}
-%      \begin{tabular}{rl}
-       \input{normtan}
-%    \end{tabular}
-%    \end{minipage}
-% \end{figure}
-% \input{normtan}
-\end{center}
+      \vspace{2ex}
+    \end{minipage}%
+    \begin{minipage}[c]{.5\textwidth}
+      \center
+      \input{normtan} \\
+      \begin{tabular}{rl}
+        $\hat{e_n}:$ & $\left[\textrm{-}\sin(\theta)\hat{\textrm{\i}}+\cos(\theta)\hat{\textrm{\j}}\right]$ \\
+        $\hat{e_t}:$ & $\left[\cos(\theta)\hat{\textrm{\i}}+\sin(\theta)\hat{\textrm{\j}}\right]$ \\
+      \end{tabular}
+    \end{minipage}
+
+\newpage
+
 % ---------------------------------------------------------------------------- %
 \section{Sum of Forces}
 % ---------------------------------------------------------------------------- %
-
-\begin{equation}
-  \sum Stuff
-\end{equation}
+Using a normal tangential coordinate system we produce the following force equations
+\begin{align}
+  \sum F_n &= ml\dot{\theta}^2 = F_{sn} + A_n - mg\cos{\theta} \label{force_left_bar_theta_normal} \\ \eqname{Sum of Normal Forces on the left bar (Theta)} \\
+  \sum F_t &= ml\dot{\theta} = F_{sn} + A_t- mg\sin{\theta} \label{force_left_bar_theta_tangential} \\ \eqname{Sum of Tangential Forces on the left bar (Theta)} \\
+  \sum F_n &= ml\dot{\phi}^2 = F_{sn} + C_n - mg\cos{\phi} \label{force_right_bar_phi_normal} \\ \eqname{Sum of Normal Forces on the right bar (Phi)} \\
+  \sum F_t &= ml\dot{\phi} = F_{sn} + C_t- mg\sin{\phi} \label{force_right_bar_phi_tangential} \\ \eqname{Sum of Tangential Forces on the right bar (Phi)}
+\end{align}
+We also product the following moment equations
+% % Sum of Moments, left bar (Theta)
+% eqn(3) = -(l/2)*(m*g*sin(theta)) + (Fs_tT)*(l) == (1/3)*m*(l^2)*thetaddot;
+\begin{align}
+  \sum M_A &= -(\frac{l}{2}mg\sin{\theta}+F_{st}l) = \frac{1}{3}ml^2\dot{\theta} \label{moment_left_bar_theta} \\ \eqname{Sum of Moments about A (Theta)} \\
+  \sum M_C &= -(\frac{l}{2}mg\sin{\phi}+F_{st}l) = \frac{1}{3}ml^2\dot{\phi} \label{moment_right_bar_theta} \\ \eqname{Sum of Moments about C (Phi)}
+\end{align}
 Where: \\
 ~\\
 \begin{tabular}{rl}
@@ -171,19 +190,25 @@ $\dot{\theta}$:& Angular velocity of the left bar. \\
 $\ddot{\theta}$:& Angular acceleration of the left bar. \\
 $\dot{\phi}$:& Angular velocity of the right bar. \\
 $\ddot{\phi}$:& Angular acceleration of the right bar. \\
-m, L, g: & Are constants; mass, length of each bar, and gravity, respectively
+A:& Reaction force in the normal or tangential direction at the top of the left bar. \\
+C:& Reaction force in the normal or tangential direction at the top of the right bar. \\
+$F_s$:& Force due to the spring in either the normal or tangential direction. \\
+m, L, g: & Are constants; mass, length of each bar, and gravity, respectively.
 \end{tabular}
 % ---------------------------------------------------------------------------- %
 \section{Knowns and Unknowns} \label{knownsandunknowns}
 % ---------------------------------------------------------------------------- %
 \begin{tabular}{ll@{\hskip .75in}ll}
   \multicolumn{1}{c}{Knowns:} && \multicolumn{1}{c}{Unknowns:} \\
-  Mass: &m = 0.142kg & String Tension: & T \\
-  String Length: &L = 0.5m & Angular Acceleration: & $\ddot{\theta}$ \\
-  Gravity: &g = 9.81$\sfrac{m}{s^2}$ \\
+  Mass: &$m$ = 0.25kg & Reaction Forces: & $A_n,~A_t$ \\
+  String Length: &$L$ = 0.5m & & $C_n,~C_t$\\
+  Gravity: &$g$ = 9.81$\sfrac{m}{s^2}$& Angular Accelerations: & $\ddot{\theta},~\ddot{\phi}$ \\
+  Linear Spring: \\
+  \quad Spring Coefficient:& $k = 25~\sfrac{N}{m}$\\
+  \quad Unstretched Length:& $L$ \\
   State Variables: \\
-  \quad Angular Velocity: &$\dot{\theta}$ & \\
-  \quad Angular Acceleration:&$\ddot{\theta}$ & \\
+  \quad Angular Position: &$\theta,~\phi$ & \\
+  \quad Angular Velocity: &$\dot{\theta},~\dot{\phi}$ & \\
 \end{tabular}
 \vspace{2ex}
 \\
@@ -191,11 +216,31 @@ m, L, g: & Are constants; mass, length of each bar, and gravity, respectively
 % ---------------------------------------------------------------------------- %
 \section{Constraints}
 % ---------------------------------------------------------------------------- %
-
+No constraint equations were needed to find a solution to the system.
 % ---------------------------------------------------------------------------- %
 \section{Solve for the Equations of Motion}
 % ---------------------------------------------------------------------------- %
+The equations of motion for this system are (from Eqs. (1-6))
+\begin{tiny}
+  $$\ddot{\theta}=-3\frac{gm\sin{\theta} - 2kL\cos{\theta} - 2kL\sin{\phi-\theta}+ \frac{2kL^2\cos{\theta}}{\sqrt{L^2(\sin{\phi}-\sin{\theta}+1)^2+ L^2(\cos{\phi} - \cos{\theta})}}+ \frac{2kL^2\sin{\phi-\theta}}{\sqrt{L^2(\sin{\phi} - \sin{\theta})^2+ L^2(\cos{\phi} - \cos{\theta})^2 + L^2(\cos{\phi} - \cos{\theta})^2)}}}{2Lm}$$
 
+  $$\ddot{\phi}=-3\frac{gm\sin{\phi} - 2kL\cos{\phi} - 2kL\sin{\phi-\theta}+ \frac{2kL^2\cos{\phi}}{\sqrt{L^2(\sin{\phi}-\sin{\theta}+1)^2+ L^2(\cos{\phi} - \cos{\theta})}}+ \frac{2kL^2\sin{\phi-\theta}}{\sqrt{L^2(\sin{\phi} - \sin{\theta})^2+ L^2(\cos{\phi} - \cos{\theta})^2 + L^2(\cos{\phi} - \cos{\theta})^2)}}}{2Lm}$$
+\end{tiny}
+% -(3*(g*m*sin(theta) - 2*k*l*cos(theta) - 2*k*l*sin(phi - theta) + (2*k*l^2*cos(theta))/(l^2*(sin(phi) - sin(theta) + 1)^2 +
+ % l^2*(cos(phi) - cos(theta))^2)^(1/2) +
+ % (2*k*l^2*sin(phi - theta))/(l^2*(sin(phi) - sin(theta) + 1)^2 + l^2*(cos(phi) - cos(theta))^2)^(1/2)))/(2*l*m)
+\begin{figure}[ht]
+  \includegraphics[center]{1}
+  \caption{Meow.}
+\end{figure}
+\begin{figure}[ht]
+  \includegraphics[center]{2}
+  \caption{Meow.}
+\end{figure}
+\begin{figure}[ht]
+  \includegraphics[center]{3}
+  \caption{Meow.}
+\end{figure}
 % ---------------------------------------------------------------------------- %
 \section{Solve the Equations of Motion}
 % ---------------------------------------------------------------------------- %
