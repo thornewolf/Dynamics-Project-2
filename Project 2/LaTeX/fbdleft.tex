@@ -15,7 +15,12 @@
   \fill[black] (270+\myAngle:1.5) circle (0.03);
   \pic [draw,->, "$\theta$", angle eccentricity=2.5] {angle = mary--centro--bob};
 
-  \fill[pattern = north east lines] ($ (centro) + (-1,0) $) rectangle ($ (centro) + (1,0.5) $);
+  \draw[->] (centro) -- ++(270+\myAngle:-1) coordinate (normL);
+  \draw (normL) node[label={[label distance=-2mm]110:$A_n$}] {};
+  \draw[->] (centro) -- ++(20:1) coordinate (tanL);
+  \draw (tanL) node[label=$A_t$] {};
+
+  % \fill[pattern = north east lines] ($ (centro) + (-1,0) $) rectangle ($ (centro) + (1,0.5) $);
   \draw[thick] ($ (centro) + (-1,0) $) -- ($ (centro) + (1,0) $);
 
   \fill[black] (centro) circle (0.075);

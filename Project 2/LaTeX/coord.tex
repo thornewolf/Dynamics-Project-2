@@ -2,6 +2,11 @@
 
   \pgfmathsetmacro{\Gvec}{1.5}
   \pgfmathsetmacro{\myAngle}{20}
+  
+  \draw [->,gray] (0,0) -- ++ (0:4) coordinate (x);
+  \draw [->,gray] (0,0) -- ++ (90:1.5) coordinate (y);
+  \draw (x) node[label=0:$x$] {};
+  \draw (y) node[label=90:$y$] {};
 
   \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
   \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
@@ -35,12 +40,6 @@
 
   \pic [draw,->, "${\phi}$", angle eccentricity=2.5] {angle = mary--centro--bob};
 
-
-
-  \draw [->,gray] (0,0) -- ++ (0:4) coordinate (x);
-  \draw [->,gray] (0,0) -- ++ (90:1.5) coordinate (y);
-  \draw (x) node[label=0:$x$] {};
-  \draw (y) node[label=90:$y$] {};
-  \fill[black] (centro) circle (0.05);
-  \fill[black] (0,0) circle (0.05);
+  % \fill[black] (centro) circle (0.05);
+  % \fill[black] (0,0) circle (0.05);
 \end{tikzpicture}

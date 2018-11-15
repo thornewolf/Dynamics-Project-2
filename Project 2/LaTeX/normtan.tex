@@ -3,6 +3,13 @@
   \pgfmathsetmacro{\Gvec}{1.5}
   \pgfmathsetmacro{\myAngle}{40}
 
+  \draw [->,gray] (0,0) -- ++ (0:2) coordinate (x);
+  \draw [->,gray] (0,0) -- ++ (0:-2);
+  \draw [->,gray] (0,0) -- ++ (90:2) coordinate (y);
+  \draw [->,gray] (0,0) -- ++ (90:-2);
+  \draw (x) node[label=0:$x$] {};
+  \draw (y) node[label=90:$y$] {};
+
   \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
   \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
 
@@ -14,14 +21,8 @@
   % \draw (norm) node[label=$\hat{e_n}$] {};
   \draw[->] (centro) -- ++(40:1.5) coordinate (tan);
   % \draw (tan) node[label=$\hat{e_t}$] {};
-  \pic [draw,->, "${\theta}$", angle eccentricity=2] {angle = mary--centro--bob};
+  \pic [draw,->, "$\theta\textrm{,}\phi$", angle eccentricity=2.2] {angle = mary--centro--bob};
 
-  \draw [->,gray] (0,0) -- ++ (0:2) coordinate (x);
-  \draw [->,gray] (0,0) -- ++ (0:-2);
-  \draw [->,gray] (0,0) -- ++ (90:2) coordinate (y);
-  \draw [->,gray] (0,0) -- ++ (90:-2);
-  \draw (x) node[label=0:$x$] {};
-  \draw (y) node[label=90:$y$] {};
   % \fill[black] (centro) circle (0.05);
   % \fill[black] (0,0) circle (0.05);
 
@@ -31,12 +32,12 @@
 
   \draw[gray,dashed,domain=10:-100] (centro) plot ({1.5*cos(\x)}, {1.5*sin(\x)});
   \fill[black] (centro) -- ++(40:1) circle (0.05) coordinate (co1);
-  \draw (co1) node[label={[label distance=2mm]0:$\hat{e_t}:~\left[\cos(\theta)\hat{\textrm{\i}}+\sin(\theta)\hat{\textrm{\j}}\right]$}] {};
+  \draw (co1) node[label={[label distance=2mm]0:$\hat{e_t}$}] {};
   \fill[black] (centro) -- ++(130:1) circle (0.05) coordinate (co2);
-  \draw (co2) node[label={[label distance=2mm]180:$\left[\textrm{-}\sin(\theta)\hat{\textrm{\i}}+\cos(\theta)\hat{\textrm{\j}}\right]:~\hat{e_n}$}] {};
+  \draw (co2) node[label={[label distance=2mm]180:$\hat{e_n}$}] {};
   \fill[black] (270+\myAngle:1.5) circle (0.05);
   \draw[->] (270+\myAngle:1.5) -- ++(40:1) coordinate (tan2);
-  \draw (270+\myAngle:1.5) -- (0,0);
+  \draw (270+\myAngle:1.5) -- (co2);
   \draw (tan2) node[label=-90:$\hat{e_t}$] {};
 
 \end{tikzpicture}
