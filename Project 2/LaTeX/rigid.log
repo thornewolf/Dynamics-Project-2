@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 NOV 2018 11:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 NOV 2018 11:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1135,23 +1135,23 @@ Overfull \hbox (12.69992pt too wide) detected at line 227
 <images/1.pdf, id=36, 409.69817pt x 170.24863pt>
 File: images/1.pdf Graphic file (type pdf)
 <use images/1.pdf>
-Package pdftex.def Info: images/1.pdf  used on input line 233.
+Package pdftex.def Info: images/1.pdf  used on input line 230.
 (pdftex.def)             Requested size: 409.69716pt x 170.2482pt.
 <images/2.pdf, id=37, 399.8753pt x 173.87715pt>
 File: images/2.pdf Graphic file (type pdf)
 <use images/2.pdf>
-Package pdftex.def Info: images/2.pdf  used on input line 237.
+Package pdftex.def Info: images/2.pdf  used on input line 234.
 (pdftex.def)             Requested size: 399.87431pt x 173.87672pt.
 <images/3.pdf, id=38, 408.1066pt x 169.04282pt>
 File: images/3.pdf Graphic file (type pdf)
 <use images/3.pdf>
-Package pdftex.def Info: images/3.pdf  used on input line 241.
+Package pdftex.def Info: images/3.pdf  used on input line 238.
 (pdftex.def)             Requested size: 408.10559pt x 169.04239pt.
 [4 <./images/1.pdf> <./images/2.pdf>] [5 <./images/3.pdf>] (./rigid.aux) ) 
 Here is how much of TeX's memory you used:
  34618 strings out of 492649
  754629 string characters out of 6129622
- 879780 words of memory out of 5000000
+ 879781 words of memory out of 5000000
  37989 multiletter control sequences out of 15000+600000
  596938 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
