@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  13 NOV 2018 11:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  15 NOV 2018 13:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -898,6 +898,10 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@toks=\toks40
 \enit@inbox=\box88
 \enitdp@description=\count307
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+\c@subfigure=\count308
+\c@subtable=\count309
 ) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
 ) (/usr/local/texlive/2018/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
@@ -911,25 +915,25 @@ File: tikzlibraryquotes.code.tex 2014/03/21 v3.0.1a (rcs-revision 1.4)
 ) (./rigid.aux)
 \openout1 = `rigid.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 32.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 31.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 32.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -969,16 +973,16 @@ File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count308
+\scratchcounter=\count310
 \scratchdimen=\dimen311
 \scratchbox=\box89
-\nofMPsegments=\count309
-\nofMParguments=\count310
+\nofMPsegments=\count311
+\nofMParguments=\count312
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count311
+\MPscratchCnt=\count313
 \MPscratchDim=\dimen312
-\MPnumerator=\count312
-\makeMPintoPDFobject=\count313
+\MPnumerator=\count314
+\makeMPintoPDFobject=\count315
 \everyMPtoPDFconversion=\toks42
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1022,7 +1026,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-\c@lstlisting=\count314
+\c@lstlisting=\count316
  ABD: EveryShipout initializing macros
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -1072,14 +1076,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 ] (./concept.tex)
-LaTeX Font Info:    Calculating math sizes for size <8.39996> on input line 59.
+LaTeX Font Info:    Calculating math sizes for size <8.39996> on input line 60.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8.39996> on input line 59.
+(Font)              <8.39996> on input line 60.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.87994> on input line 59.
+(Font)              <5.87994> on input line 60.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <4.19998> on input line 59.
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 78.
+(Font)              <4.19998> on input line 60.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 79.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [1
@@ -1113,55 +1117,75 @@ Missing character: There is no 2 in font nullfont!
 Missing character: There is no ) in font nullfont!
 Missing character: There is no ; in font nullfont!
 ) (./fbdright.tex) (./adleft.tex) (./adright.tex) (./coord.tex) (./normtan.tex)
-Overfull \hbox (81.05031pt too wide) in paragraph at lines 42--158
+Overfull \hbox (81.05031pt too wide) in paragraph at lines 42--163
  [] 
  []
 
-[2]
-Overfull \hbox (19.1588pt too wide) in paragraph at lines 186--199
-[][]  
- []
-
-[3]
-Overfull \hbox (10.54994pt too wide) detected at line 225
+[2] [3]
+Overfull \hbox (10.54994pt too wide) detected at line 236
 [] \OT1/lmr/m/n/6 = \OMS/lmsy/m/n/6 ^^@\OT1/lmr/m/n/6 3[]
  []
 
 
-Overfull \hbox (12.69992pt too wide) detected at line 227
+Overfull \hbox (12.69992pt too wide) detected at line 238
 [] \OT1/lmr/m/n/6 = \OMS/lmsy/m/n/6 ^^@\OT1/lmr/m/n/6 3[]
  []
 
-<images/1.pdf, id=36, 409.69817pt x 170.24863pt>
+<images/1.pdf, id=37, 409.69817pt x 170.24863pt>
 File: images/1.pdf Graphic file (type pdf)
 <use images/1.pdf>
-Package pdftex.def Info: images/1.pdf  used on input line 230.
+Package pdftex.def Info: images/1.pdf  used on input line 241.
 (pdftex.def)             Requested size: 409.69716pt x 170.2482pt.
-<images/2.pdf, id=37, 399.8753pt x 173.87715pt>
+<images/2.pdf, id=38, 399.8753pt x 173.87715pt>
 File: images/2.pdf Graphic file (type pdf)
 <use images/2.pdf>
-Package pdftex.def Info: images/2.pdf  used on input line 234.
+Package pdftex.def Info: images/2.pdf  used on input line 245.
 (pdftex.def)             Requested size: 399.87431pt x 173.87672pt.
-<images/3.pdf, id=38, 408.1066pt x 169.04282pt>
+<images/3.pdf, id=39, 408.1066pt x 169.04282pt>
 File: images/3.pdf Graphic file (type pdf)
 <use images/3.pdf>
-Package pdftex.def Info: images/3.pdf  used on input line 238.
+Package pdftex.def Info: images/3.pdf  used on input line 249.
 (pdftex.def)             Requested size: 408.10559pt x 169.04239pt.
-[4 <./images/1.pdf> <./images/2.pdf>] [5 <./images/3.pdf>] (./rigid.aux) ) 
+[4 <./images/1.pdf>] [5 <./images/2.pdf> <./images/3.pdf>] [6] (./matlab1.tex
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 1.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [7]
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 62.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [8]
+<images/rigid_01.jpg, id=107, 562.1pt x 421.575pt>
+File: images/rigid_01.jpg Graphic file (type jpg)
+<use images/rigid_01.jpg>
+Package pdftex.def Info: images/rigid_01.jpg  used on input line 111.
+(pdftex.def)             Requested size: 562.09863pt x 421.57396pt.
+<images/rigid_02.jpg, id=108, 562.1pt x 421.575pt>
+File: images/rigid_02.jpg Graphic file (type jpg)
+<use images/rigid_02.jpg>
+Package pdftex.def Info: images/rigid_02.jpg  used on input line 113.
+(pdftex.def)             Requested size: 562.09863pt x 421.57396pt.
+ [9 <./images/rigid_01.jpg>]
+<images/rigid_03.jpg, id=112, 562.1pt x 421.575pt>
+File: images/rigid_03.jpg Graphic file (type jpg)
+<use images/rigid_03.jpg>
+Package pdftex.def Info: images/rigid_03.jpg  used on input line 115.
+(pdftex.def)             Requested size: 562.09863pt x 421.57396pt.
+) [10 <./images/rigid_02.jpg> <./images/rigid_03.jpg>] (./rigid.aux) ) 
 Here is how much of TeX's memory you used:
- 34618 strings out of 492649
- 754629 string characters out of 6129622
- 879781 words of memory out of 5000000
- 37989 multiletter control sequences out of 15000+600000
- 596938 words of font info for 91 fonts, out of 8000000 for 9000
+ 35206 strings out of 492649
+ 761287 string characters out of 6129622
+ 1021442 words of memory out of 5000000
+ 38559 multiletter control sequences out of 15000+600000
+ 603443 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,18n,92p,10376b,1086s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/
-type1/public/lm/lmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on rigid.pdf (7 pages, 329183 bytes).
+ 62i,18n,120p,10376b,1985s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type
+1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on rigid.pdf (12 pages, 501919 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
+ 176 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 52 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -16,6 +16,7 @@
 \usepackage{caption}
 \usepackage{amsmath}
 \usepackage{enumitem}
+\usepackage{subcaption}
 
 \newcommand{\eqname}[1]{\tag*{#1}}% Tag equation with name
 
@@ -46,9 +47,9 @@
   \input{concept}
 \end{minipage}%
 \begin{minipage}[c]{.6\textwidth}
-  The pendulumn system consists of two rigid bars attached at their ends by a linear spring.
+  The pendulumn system consists of two rigid bars rotating about one end,
+  attached at the opposite ends by a linear spring.
 \end{minipage}
-% \caption{Conceptualization of the Dynamic System}
 \end{figure}
 
 \subsection{Constants and Assumptions}
@@ -57,8 +58,8 @@
  Bar Mass: &$m$ = 0.25kg & No Losses\\
  Bar Length: &$L$ = 0.5m & Released from Rest\\
  Gravity: &$g$ = 9.81$\sfrac{m}{s^2}$ &Slender Bars \\
- Linear Spring: &&Rigid-Body Dynamics\\
- \quad Spring Coefficient:& $k = 25~\sfrac{N}{m}$ & Planar\\
+ Linear Spring: &&Planar\\
+ \quad Spring Coefficient:& $k = 25~\sfrac{N}{m}$ &Rigid-Body Dynamics \\
  \quad Unstretched Length:& $L$ \\
 \end{tabular}
 \vspace{5ex}
@@ -115,8 +116,8 @@ A
      $mg$:&Mass $\cdot$ gravity, weight of each bar\\
      $G$:&Center of gravity of each bar\\
      $\theta,~\phi$:& Angle of bar relative to vertical\\
-     $A_n,~C_n$:& Reaction forces in the normal \\ & direction \\
-     $A_t,~C_t$:& Reaction forces in the tangential \\ & direction \\
+     $A_n,~C_n$:& Reaction forces in the normal \\ & direction at pin\\
+     $A_t,~C_t$:& Reaction forces in the tangential \\ & direction at pin\\
    \end{tabular}
    \end{minipage}%
   \begin{minipage}[c]{.225\textwidth}
@@ -125,7 +126,7 @@ A
      \input{fbdright}
   \end{minipage}
 \end{figure}
-
+\vspace{-3ex}
 \subsection*{Acceleration Diagram}
 \begin{figure}[ht]
    \begin{minipage}[c]{.25\textwidth}
@@ -143,43 +144,51 @@ A
      \input{adright}
   \end{minipage}
 \end{figure}
-
+\vspace{-5ex}
 % ---------------------------------------------------------------------------- %
 \section{Coordinate Frame}
 % ---------------------------------------------------------------------------- %
-
-    \begin{minipage}[c]{.5\textwidth}
+\begin{figure}[ht]
+    \begin{subfigure}[t]{.5\textwidth}
       \center
+      \caption{Separate Coordinate Frames}
+      \label{coord:a}
       \input{coord}
       \vspace{2ex}
-    \end{minipage}%
-    \begin{minipage}[c]{.5\textwidth}
+    \end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
       \center
+      \caption{Unit Vector Calculations}
+      \label{coord:b}
       \input{normtan} \\
       \begin{tabular}{rl}
         $\hat{e_n}:$ & $\left[\textrm{-}\sin(\theta)\hat{\textrm{\i}}+\cos(\theta)\hat{\textrm{\j}}\right]$ \\
         $\hat{e_t}:$ & $\left[\cos(\theta)\hat{\textrm{\i}}+\sin(\theta)\hat{\textrm{\j}}\right]$ \\
       \end{tabular}
-    \end{minipage}
-
+    \end{subfigure}
+    \caption{Visual Representation of Coordinate Frame Unit Vectors}
+\end{figure}
+Due to the complexity of the sytem if it were to be defined in cartesian coordinates,
+we determined that the motion of the system would most effectively be represented by two separate
+normal-tangential coordinate frames because the motion of each bar is purely rotational, where the
+center of mass of each bar is following a curve. As seen in Figure (\ref{coord:a}), two coordinate
+frames were used, one for each bar. Similarly, Figure (\ref{coord:b}) shows how the
+unit vectors are calculated as well as the path the center of mass travels.
 \newpage
 
 % ---------------------------------------------------------------------------- %
 \section{Sum of Forces}
 % ---------------------------------------------------------------------------- %
-Using a normal tangential coordinate system we produce the following force equations
+The six equations that represent the forces on the system are comprised of four force summations and two moment equations,
 \begin{align}
-  \sum F_n &= ml\dot{\theta}^2 = F_{sn} + A_n - mg\cos{\theta} \label{force_left_bar_theta_normal} \\ \eqname{Sum of Normal Forces on the left bar (Theta)} \\
-  \sum F_t &= ml\dot{\theta} = F_{sn} + A_t- mg\sin{\theta} \label{force_left_bar_theta_tangential} \\ \eqname{Sum of Tangential Forces on the left bar (Theta)} \\
-  \sum F_n &= ml\dot{\phi}^2 = F_{sn} + C_n - mg\cos{\phi} \label{force_right_bar_phi_normal} \\ \eqname{Sum of Normal Forces on the right bar (Phi)} \\
-  \sum F_t &= ml\dot{\phi} = F_{sn} + C_t- mg\sin{\phi} \label{force_right_bar_phi_tangential} \\ \eqname{Sum of Tangential Forces on the right bar (Phi)}
-\end{align}
-We also product the following moment equations
-% % Sum of Moments, left bar (Theta)
-% eqn(3) = -(l/2)*(m*g*sin(theta)) + (Fs_tT)*(l) == (1/3)*m*(l^2)*thetaddot;
-\begin{align}
-  \sum M_A &= -(\frac{l}{2}mg\sin{\theta}+F_{st}l) = \frac{1}{3}ml^2\dot{\theta} \label{moment_left_bar_theta} \\ \eqname{Sum of Moments about A (Theta)} \\
-  \sum M_C &= -(\frac{l}{2}mg\sin{\phi}+F_{st}l) = \frac{1}{3}ml^2\dot{\phi} \label{moment_right_bar_theta} \\ \eqname{Sum of Moments about C (Phi)}
+  \sum F_n &= m\frac{L}{2}\dot{\theta}^2 = F_{s_n} + A_n - mg\cos(\theta) \label{force_left_bar_theta_normal} \\ \eqname{Sum of Normal Forces on the left bar ($\theta$)} \\
+  \sum F_t &= m\frac{L}{2}\ddot{\theta} = F_{s_n} + A_t- mg\sin(\theta) \label{force_left_bar_theta_tangential} \\ \eqname{Sum of Tangential Forces on the left bar ($\theta$)} \\
+  \sum F_n &= m\frac{L}{2}\dot{\phi}^2 = F_{s_n} + C_n - mg\cos(\phi) \label{force_right_bar_phi_normal} \\ \eqname{Sum of Normal Forces on the right bar ($\phi$)} \\
+  \sum F_t &= m\frac{L}{2}\ddot{\phi} = F_{s_n} + C_t- mg\sin(\phi) \label{force_right_bar_phi_tangential} \\ \eqname{Sum of Tangential Forces on the right bar ($\phi$)} \\
+% \end{align}
+% \begin{align}
+  \sum M_A &= -\left(\frac{L}{2} \cdot mg\sin(\theta)\right) + \left(F_{st} \cdot L\right) = \frac{1}{3}mL^2\ddot{\theta} \label{moment_left_bar_theta} \\ \eqname{Sum of Moments about A ($\theta$)} \\
+  \sum M_C &= -\left(\frac{L}{2} \cdot mg\sin(\phi)\right)+\left(F_{st} \cdot L\right) = \frac{1}{3}mL^2\ddot{\phi} \label{moment_right_bar_theta} \\ \eqname{Sum of Moments about C ($\phi$)}
 \end{align}
 Where: \\
 ~\\
@@ -187,13 +196,13 @@ Where: \\
 $\theta$:& Position of the left bar. \\
 $\phi$:& Position of the right bar. \\
 $\dot{\theta}$:& Angular velocity of the left bar. \\
-$\ddot{\theta}$:& Angular acceleration of the left bar. \\
 $\dot{\phi}$:& Angular velocity of the right bar. \\
+$\ddot{\theta}$:& Angular acceleration of the left bar. \\
 $\ddot{\phi}$:& Angular acceleration of the right bar. \\
-A:& Reaction force in the normal or tangential direction at the top of the left bar. \\
-C:& Reaction force in the normal or tangential direction at the top of the right bar. \\
+$A$:& Reaction force in the normal or tangential direction on the left bar. \\
+$C$:& Reaction force in the normal or tangential direction on the right bar. \\
 $F_s$:& Force due to the spring in either the normal or tangential direction. \\
-m, L, g: & Are constants; mass, length of each bar, and gravity, respectively.
+$m,~L,~g$: & Mass, length of each bar, and gravity, respectively.
 \end{tabular}
 % ---------------------------------------------------------------------------- %
 \section{Knowns and Unknowns} \label{knownsandunknowns}
@@ -211,7 +220,9 @@ m, L, g: & Are constants; mass, length of each bar, and gravity, respectively.
   \quad Angular Velocity: &$\dot{\theta},~\dot{\phi}$ & \\
 \end{tabular}
 \vspace{2ex}
-\\
+
+Since there are six equations and six unknowns, we can solve for the equations of
+motion analytically using Matlab.
 
 % ---------------------------------------------------------------------------- %
 \section{Constraints}
@@ -263,9 +274,10 @@ Joint Effort &
 \singlespacing
 
 \subsection{Analytical Solution}
-
+\newpage
 \subsection{Numerical Solution} \label{appendix:numerical}
-
+\subsubsection{Non-Linearized}
+\input{matlab1}
 
 \end{flushleft}
 \end{document}

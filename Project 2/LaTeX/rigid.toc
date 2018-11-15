@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {2}Free Body Diagram}{2}
 \contentsline {section}{\numberline {3}Coordinate Frame}{2}
 \contentsline {section}{\numberline {4}Sum of Forces}{3}
-\contentsline {section}{\numberline {5}Knowns and Unknowns}{3}
+\contentsline {section}{\numberline {5}Knowns and Unknowns}{4}
 \contentsline {section}{\numberline {6}Constraints}{4}
 \contentsline {section}{\numberline {7}Solve for the Equations of Motion}{4}
 \contentsline {section}{\numberline {8}Solve the Equations of Motion}{5}
@@ -12,5 +12,6 @@
 \contentsline {subsection}{\numberline {9.2}Magnitude}{5}
 \contentsline {section}{\numberline {10}Appendix}{5}
 \contentsline {subsection}{\numberline {10.1}Attributions}{5}
-\contentsline {subsection}{\numberline {10.2}Analytical Solution}{5}
-\contentsline {subsection}{\numberline {10.3}Numerical Solution}{5}
+\contentsline {subsection}{\numberline {10.2}Analytical Solution}{6}
+\contentsline {subsection}{\numberline {10.3}Numerical Solution}{7}
+\contentsline {subsubsection}{Non-Linearized}{7}
