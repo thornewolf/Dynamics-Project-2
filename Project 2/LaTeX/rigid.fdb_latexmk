@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1542336596 "rigid.tex" "rigid.pdf" "rigid" 1542336598
+["pdflatex"] 1542337442 "rigid.tex" "rigid.pdf" "rigid" 1542337443
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1480098668 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1480098668 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1480098668 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -237,15 +237,15 @@
   "images/univ.png" 1527025094 67488 7f4ba349c8773925208d9c1f9ac88a34 ""
   "matlab1.tex" 1542315113 3210 697a3dc28152328cd88edc54332d7f9d ""
   "normtan.tex" 1542066854 1721 77674573164f2e36e05d57b346c71647 ""
-  "rigid.aux" 1542336597 2477 03b47d73d25cb1ed8aabf6e1837b38d2 ""
-  "rigid.lof" 1542336597 333 45f33797a9d690e4aa9e5abfe4bc6fa8 ""
-  "rigid.tex" 1542336593 12822 1b9246817e66fec3905b246495cd59a0 ""
-  "rigid.toc" 1542336597 1065 ecc791a12175062d149c6bc1ab0b1a02 ""
+  "rigid.aux" 1542337443 2477 ab05cabc76200dfeb081c7488efba29b ""
+  "rigid.lof" 1542337443 333 45f33797a9d690e4aa9e5abfe4bc6fa8 ""
+  "rigid.tex" 1542337441 13195 8721cf7fd64b85898656381fd4f39714 ""
+  "rigid.toc" 1542337443 1065 b99ba0ab958844fa64364e85029af29b ""
   "titlepage.tex" 1541780406 1073 b76882ac1d0e1bb5c6c0108293901326 ""
   "unitcheck.tex" 1542335009 549 526ce4476698a5bf6b224630e10c5d75 ""
   (generated)
-  "rigid.aux"
-  "rigid.lof"
-  "rigid.pdf"
   "rigid.toc"
+  "rigid.pdf"
+  "rigid.aux"
   "rigid.log"
+  "rigid.lof"

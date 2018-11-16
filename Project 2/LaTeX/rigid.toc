@@ -10,8 +10,8 @@
 \contentsline {section}{\numberline {9}Does it Make Sense?}{5}
 \contentsline {subsection}{\numberline {9.1}Units}{5}
 \contentsline {subsection}{\numberline {9.2}Magnitude}{6}
-\contentsline {section}{\numberline {10}Appendix}{6}
-\contentsline {subsection}{\numberline {10.1}Attributions}{6}
+\contentsline {section}{\numberline {10}Appendix}{7}
+\contentsline {subsection}{\numberline {10.1}Attributions}{7}
 \contentsline {subsection}{\numberline {10.2}Analytical Solution}{7}
 \contentsline {subsection}{\numberline {10.3}Numerical Solution}{8}
 \contentsline {subsubsection}{Non-Linearized}{8}
