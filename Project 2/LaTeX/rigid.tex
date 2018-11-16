@@ -240,14 +240,17 @@ The equations of motion for this system are (from Eqs. (1-6))
 \begin{figure}[ht]
   \includegraphics[center]{1}
   \caption{Meow.}
+  \label{fig:+15+15}
 \end{figure}
 \begin{figure}[ht]
   \includegraphics[center]{2}
   \caption{Meow.}
+  \label{fig:-15+15}
 \end{figure}
 \begin{figure}[ht]
   \includegraphics[center]{3}
   \caption{Meow.}
+  \label{fig:+05+15}
 \end{figure}
 % ---------------------------------------------------------------------------- %
 \section{Solve the Equations of Motion}
@@ -257,9 +260,21 @@ The equations of motion for this system are (from Eqs. (1-6))
 \section{Does it Make Sense?}
 % ---------------------------------------------------------------------------- %
 \subsection{Units}
-
+Checking with the MATLAB symbolic units tool (from Section \ref{appendix:numerical}): \\
+~\\
+\input{unitcheck}
 \subsection{Magnitude}
-
+Looking at Figure (\ref{fig:+15+15}), the amplitude and perod of both phi and theta perfectly overlap with eachother. This is expected due to the fact that two pendulums that begin oscillating when released from the same state will never have a change in their relative positions. This means that the spring connecting the two is neither streched nor compressed throughout the system's oscillations. This is valid because the amplitude and period of oscillation never changes in this lossless system. \\
+Looking at the generic linearization equation,
+$$[m] \begin{bmatrix} \ddot{\theta}\\ \ddot{\phi} \end{bmatrix} +
+[k] \begin{bmatrix} \theta \\ \phi \end{bmatrix} =
+\begin{bmatrix} 0\\ 0 \end{bmatrix}$$
+We can see that the solution to the system when $\theta_0 = \phi_0$ will be of the form,
+$$-\omega^2[m] \begin{bmatrix} \theta\\ \phi \end{bmatrix} \cos(\omega t + \Psi)$$
+instead of the form,
+$$-\omega^2[m] \begin{bmatrix} \theta\\ \phi \end{bmatrix} \cos(\omega t + \Psi)
++  [k] \begin{bmatrix} \theta \\ \phi \end{bmatrix} \cos(\omega t + \Psi)$$
+The fact that the equation takes the former's form supports our idea that this behavior makes physical sense when $\theta_0 = \phi_0$. For initial conditions where $\theta_0 != \phi_0$ or $\ddot{\theta_0} != \ddot{\phi_0}$ we find a non-zero $[k]$, which lines up with the physical concept that the bars will inconsistently oscillate.
 \section{Appendix} \label{appendix}
 
 \subsection{Attributions}
@@ -267,9 +282,9 @@ The equations of motion for this system are (from Eqs. (1-6))
 \onehalfspacing
 \begin{tabular}{ll}
 Jeffrey Chen & \\
-Thorne Wolfenbarger & \\
+Thorne Wolfenbarger & Is just really really cool\\
 Trey Dufrene & \\
-Joint Effort &
+Joint Effort & MATLAB Coding, Solving EOM's
 \end{tabular}
 \singlespacing
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  4 NOV 2018 11:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  15 NOV 2018 19:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1058,106 +1058,118 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `pendulum.toc'.
 
+ (./pendulum.lof)
+\tf@lof=\write5
+\openout5 = `pendulum.lof'.
+
  [1
 
 ] (./concept.tex)
-LaTeX Font Info:    Calculating math sizes for size <8.39996> on input line 52.
+LaTeX Font Info:    Calculating math sizes for size <8.39996> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8.39996> on input line 52.
+(Font)              <8.39996> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.87994> on input line 52.
+(Font)              <5.87994> on input line 55.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <4.19998> on input line 52.
- [2] (./fbd.tex)
+(Font)              <4.19998> on input line 55.
+ [1
+
+] (./fbd.tex)
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 102.
+(Font)              <10> on input line 105.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 102.
- (./ad.tex) [3] [4]
+(Font)              <7> on input line 105.
+ (./ad.tex) [2] [3]
 <images/theta.pdf, id=35, 408.59367pt x 164.35632pt>
 File: images/theta.pdf Graphic file (type pdf)
 <use images/theta.pdf>
-Package pdftex.def Info: images/theta.pdf  used on input line 223.
+Package pdftex.def Info: images/theta.pdf  used on input line 226.
 (pdftex.def)             Requested size: 408.59267pt x 164.35591pt.
 <images/thetalegend.pdf, id=36, 73.73146pt x 113.61336pt>
 File: images/thetalegend.pdf Graphic file (type pdf)
 <use images/thetalegend.pdf>
-Package pdftex.def Info: images/thetalegend.pdf  used on input line 226.
+Package pdftex.def Info: images/thetalegend.pdf  used on input line 229.
 (pdftex.def)             Requested size: 73.73126pt x 113.61307pt.
 <images/natfreq.pdf, id=37, 379.55286pt x 171.88116pt>
 File: images/natfreq.pdf Graphic file (type pdf)
 <use images/natfreq.pdf>
-Package pdftex.def Info: images/natfreq.pdf  used on input line 242.
+Package pdftex.def Info: images/natfreq.pdf  used on input line 245.
 (pdftex.def)             Requested size: 379.55193pt x 171.88074pt.
- [5 <./images/theta.pdf> <./images/thetalegend.pdf> <./images/natfreq.pdf>]
+ [4 <./images/theta.pdf> <./images/thetalegend.pdf> <./images/natfreq.pdf>]
 <images/thetadrag.pdf, id=89, 418.60832pt x 146.59091pt>
 File: images/thetadrag.pdf Graphic file (type pdf)
 <use images/thetadrag.pdf>
-Package pdftex.def Info: images/thetadrag.pdf  used on input line 262.
+Package pdftex.def Info: images/thetadrag.pdf  used on input line 265.
 (pdftex.def)             Requested size: 418.60728pt x 146.59055pt.
- [6 <./images/thetadrag.pdf>]
+ [5 <./images/thetadrag.pdf>]
 <images/compare.pdf, id=103, 423.18033pt x 147.15305pt>
 File: images/compare.pdf Graphic file (type pdf)
 <use images/compare.pdf>
-Package pdftex.def Info: images/compare.pdf  used on input line 283.
+Package pdftex.def Info: images/compare.pdf  used on input line 292.
 (pdftex.def)             Requested size: 423.17928pt x 147.15268pt.
 <images/compareclose.pdf, id=104, 410.82898pt x 151.77127pt>
 File: images/compareclose.pdf Graphic file (type pdf)
 <use images/compareclose.pdf>
-Package pdftex.def Info: images/compareclose.pdf  used on input line 289.
+Package pdftex.def Info: images/compareclose.pdf  used on input line 297.
 (pdftex.def)             Requested size: 410.82796pt x 151.77089pt.
- [7 <./images/compare.pdf> <./images/compareclose.pdf>] [8] [9] [10] (./matlabnodrag.tex
+ [6 <./images/compare.pdf> <./images/compareclose.pdf>] (./unitcheck.tex
 LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 1.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 7.
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 8.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [11]
-<Pendulum_01.jpg, id=149, 562.1pt x 421.575pt>
+)) [7] [8]
+<images/analytical.pdf, id=143, 597.50829pt x 845.0471pt>
+File: images/analytical.pdf Graphic file (type pdf)
+<use images/analytical.pdf>
+Package pdftex.def Info: images/analytical.pdf  used on input line 375.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+ [9] [10 <./images/analytical.pdf>] (./matlabnodrag.tex [11]
+<Pendulum_01.jpg, id=162, 562.1pt x 421.575pt>
 File: Pendulum_01.jpg Graphic file (type jpg)
 <use Pendulum_01.jpg>
 Package pdftex.def Info: Pendulum_01.jpg  used on input line 76.
 (pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
  [12]
-<Pendulum_02.jpg, id=154, 562.1pt x 421.575pt>
+<Pendulum_02.jpg, id=166, 562.1pt x 421.575pt>
 File: Pendulum_02.jpg Graphic file (type jpg)
 <use Pendulum_02.jpg>
 Package pdftex.def Info: Pendulum_02.jpg  used on input line 78.
 (pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
 ) [13 <./Pendulum_01.jpg> <./Pendulum_02.jpg>] (./matlabwithdrag.tex [14] [15]
-<PendulumThorne_01.jpg, id=164, 562.1pt x 421.575pt>
+<PendulumThorne_01.jpg, id=177, 562.1pt x 421.575pt>
 File: PendulumThorne_01.jpg Graphic file (type jpg)
 <use PendulumThorne_01.jpg>
 Package pdftex.def Info: PendulumThorne_01.jpg  used on input line 103.
 (pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
-<PendulumThorne_02.jpg, id=165, 562.1pt x 421.575pt>
+<PendulumThorne_02.jpg, id=178, 562.1pt x 421.575pt>
 File: PendulumThorne_02.jpg Graphic file (type jpg)
 <use PendulumThorne_02.jpg>
 Package pdftex.def Info: PendulumThorne_02.jpg  used on input line 105.
 (pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
  [16 <./PendulumThorne_01.jpg>]
-<PendulumThorne_03.jpg, id=169, 562.1pt x 421.575pt>
+<PendulumThorne_03.jpg, id=182, 562.1pt x 421.575pt>
 File: PendulumThorne_03.jpg Graphic file (type jpg)
 <use PendulumThorne_03.jpg>
 Package pdftex.def Info: PendulumThorne_03.jpg  used on input line 107.
 (pdftex.def)             Requested size: 361.34999pt x 271.00998pt.
 ) [17 <./PendulumThorne_02.jpg> <./PendulumThorne_03.jpg>] (./pendulum.aux) ) 
 Here is how much of TeX's memory you used:
- 34354 strings out of 492649
- 744341 string characters out of 6129622
- 985482 words of memory out of 5000000
- 37720 multiletter control sequences out of 15000+600000
+ 34374 strings out of 492649
+ 744637 string characters out of 6129622
+ 985489 words of memory out of 5000000
+ 37733 multiletter control sequences out of 15000+600000
  612379 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,22n,120p,10379b,1983s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,22n,120p,10379b,1938s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/201
 8/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on pendulum.pdf (18 pages, 896106 bytes).
+Output written on pendulum.pdf (19 pages, 2391979 bytes).
 PDF statistics:
- 229 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
+ 242 PDF objects out of 1000 (max. 8388607)
+ 171 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 

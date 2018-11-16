@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1541357670 "pendulum.tex" "pendulum.pdf" "pendulum" 1541357689
+["pdflatex"] 1542334786 "pendulum.tex" "pendulum.pdf" "pendulum" 1542334787
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1480098668 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1480098668 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1480098668 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -230,6 +230,7 @@
   "ad.tex" 1540953672 818 b4924907c10bdac21e08a20d7880ddff ""
   "concept.tex" 1540948266 732 8ba1533439bfed3e213365b67f99e43a ""
   "fbd.tex" 1540953668 1064 7d85e85ed38ade9535e8afb388ca2db1 ""
+  "images/analytical.pdf" 1541299292 1492092 65dca8b27a4e0a9e3fed5e37c65e3e6c ""
   "images/compare.pdf" 1541289894 190298 125efd92ca155b492eac37f0d92d842c ""
   "images/compareclose.pdf" 1541289868 27694 ff0df6f4831303a440468575b1ed4794 ""
   "images/natfreq.pdf" 1541294286 24552 5b3d92a344aa4fa7655bf5e892c52972 ""
@@ -239,11 +240,14 @@
   "images/univ.png" 1527025094 67488 7f4ba349c8773925208d9c1f9ac88a34 ""
   "matlabnodrag.tex" 1541298890 2173 369e2f19cb3483f570c2f0606069e48f ""
   "matlabwithdrag.tex" 1541298420 3282 5f5bc4e207164d10748be03ee490c1d0 ""
-  "pendulum.aux" 1541357671 2754 7a69f6cf7c93d6ea592bc92c250ca4a1 ""
-  "pendulum.tex" 1541357668 14649 eb140afbbff12a5fb78c64b99504ac59 ""
-  "pendulum.toc" 1541357671 1232 f9b1781c79eb506024118d44a4fbd2dd ""
+  "pendulum.aux" 1542334787 2855 993e7971768c4a98dfa9636abbeaf2b5 ""
+  "pendulum.lof" 1542334787 604 c8daecb5fff6e83922ecbfdbc68a2d6f ""
+  "pendulum.tex" 1542334733 15821 02c6dbe5e9178d9a52889646aee39aa2 ""
+  "pendulum.toc" 1542334787 1230 e67ca0400e6ad2eb2e072c26c93f2878 ""
   "titlepage.tex" 1541282728 1064 9fefb654d1f699ebbc8da7e711954d2d ""
+  "unitcheck.tex" 1542334780 449 01090af64cc337e827e5015076284904 ""
   (generated)
+  "pendulum.lof"
   "pendulum.log"
   "pendulum.toc"
   "pendulum.aux"

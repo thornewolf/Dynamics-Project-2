@@ -67,42 +67,42 @@ eom = odeFunction([thetadot; thetaEOM; phidot; phiEOM],...
 theta_o = [pi/12 -pi/12 pi/36];
 
 
-% for i = 1:3
-%     [T,S] = ode45(@(t,s)eom(t,s,c.m,c.k,c.l,c.I,c.g),linspace(0,10,1001),...
-%         [theta_o(i),0,pi/12,0]);
-%     figure
-%     hold on
-%     grid on
-%     xlabel('Time, sec')
-%     ylabel('Angular Position, rad')
-%     plot(T,S(:,1),'DisplayName', ['\theta_o = ' num2str(rad2deg(theta_o(i))) '^o'])
-%     plot(T,S(:,3),'DisplayName', '\phi_o = 15^o')
-%     legend('show')
-%     set(gcf, 'PaperPositionMode', 'manual');
-%     set(gcf, 'PaperUnits', 'inches');
-%     set(gcf, 'PaperPosition', [1 1 6 2.5]);
-%     fig = gcf;
-%     print(['BestFitFigure' num2str(i)],'-dpdf');
-% end
-% 
-% 
-% % Checking EOM Units
-% u = symunit;
-% m = m*u.kg;
-% g = g*u.m/u.s^2;
-% l = l*u.m;
-% k = k*u.N/u.m;
-% An = An*u.N;
-% At = At*u.N;
-% Cn = Cn*u.N;
-% Ct = Ct*u.N;
-% theta = 'theta';
-% thetadot = 'thetadot'/u.s;
-% thetaddot = 'thetaddot'/u.s^2;
-% phi = 'phi';
-% phidot = 'phidot'/u.s;
-% phiddot = 'phiddot'/u.s^2;
-% 
-% eqn = subs(eqn);
-% unitCheck = checkUnits(eqn)
+for i = 1:3
+    [T,S] = ode45(@(t,s)eom(t,s,c.m,c.k,c.l,c.I,c.g),linspace(0,10,1001),...
+        [theta_o(i),0,pi/12,0]);
+    figure
+    hold on
+    grid on
+    xlabel('Time, sec')
+    ylabel('Angular Position, rad')
+    plot(T,S(:,1),'DisplayName', ['\theta_o = ' num2str(rad2deg(theta_o(i))) '^o'])
+    plot(T,S(:,3),'DisplayName', '\phi_o = 15^o')
+    legend('show')
+    set(gcf, 'PaperPositionMode', 'manual');
+    set(gcf, 'PaperUnits', 'inches');
+    set(gcf, 'PaperPosition', [1 1 6 2.5]);
+    fig = gcf;
+    print(['BestFitFigure' num2str(i)],'-dpdf');
+end
+
+
+% Checking EOM Units
+u = symunit;
+m = m*u.kg;
+g = g*u.m/u.s^2;
+l = l*u.m;
+k = k*u.N/u.m;
+An = An*u.N;
+At = At*u.N;
+Cn = Cn*u.N;
+Ct = Ct*u.N;
+theta = 'theta';
+thetadot = 'thetadot'/u.s;
+thetaddot = 'thetaddot'/u.s^2;
+phi = 'phi';
+phidot = 'phidot'/u.s;
+phiddot = 'phiddot'/u.s^2;
+
+eqn = subs(eqn);
+unitCheck = checkUnits(eqn)
 
