@@ -231,54 +231,29 @@ No constraint equations were needed to find a solution to the system.
 % ---------------------------------------------------------------------------- %
 \section{Solve for the Equations of Motion}
 % ---------------------------------------------------------------------------- %
-The equations of motion for this system are (from Eqs. (1-6))
-\begin{tiny}
-  $$\ddot{\theta}=-3\frac{gm\sin{\theta} - 2kL\cos{\theta} - 2kL\sin{\phi-\theta}+ \frac{2kL^2\cos{\theta}}{\sqrt{L^2(\sin{\phi}-\sin{\theta}+1)^2+ L^2(\cos{\phi} - \cos{\theta})}}+ \frac{2kL^2\sin{\phi-\theta}}{\sqrt{L^2(\sin{\phi} - \sin{\theta})^2+ L^2(\cos{\phi} - \cos{\theta})^2 + L^2(\cos{\phi} - \cos{\theta})^2)}}}{2Lm}$$
 
-  $$\ddot{\phi}=-3\frac{gm\sin{\phi} - 2kL\cos{\phi} - 2kL\sin{\phi-\theta}+ \frac{2kL^2\cos{\phi}}{\sqrt{L^2(\sin{\phi}-\sin{\theta}+1)^2+ L^2(\cos{\phi} - \cos{\theta})}}+ \frac{2kL^2\sin{\phi-\theta}}{\sqrt{L^2(\sin{\phi} - \sin{\theta})^2+ L^2(\cos{\phi} - \cos{\theta})^2 + L^2(\cos{\phi} - \cos{\theta})^2)}}}{2Lm}$$
-\end{tiny}
+% ---------------------------------------------------------------------------- %
+\section{Solve the Equations of Motion}
+% ---------------------------------------------------------------------------- %
 \begin{figure}[ht]
   \includegraphics[center]{1}
   \caption{Angular Position vs. Time ($\theta_o:~15^\circ,~\phi_o:~15^\circ$)}
-  \label{fig:+15+15}
 \end{figure}
 \begin{figure}[ht]
   \includegraphics[center]{2}
   \caption{Angular Position vs. Time ($\theta_o:~\textrm{-}15^\circ,~\phi_o:~15^\circ$)}
-  \label{fig:-15+15}
 \end{figure}
 \begin{figure}[ht]
   \includegraphics[center]{3}
   \caption{Angular Position vs. Time ($\theta_o:~5^\circ,~\phi_o:~15^\circ$)}
-  \label{fig:+05+15}
 \end{figure}
-% ---------------------------------------------------------------------------- %
-\section{Solve the Equations of Motion}
-% ---------------------------------------------------------------------------- %
-
 % ---------------------------------------------------------------------------- %
 \section{Does it Make Sense?}
 % ---------------------------------------------------------------------------- %
 \subsection{Units}
 
-% TODO Actual unit check here?
-
-Checking with the MATLAB symbolic units tool (from Section \ref{appendix:numerical}): \\
-~\\
-\input{unitcheck}
 \subsection{Magnitude}
-Looking at Figure (\ref{fig:+15+15}), the amplitude and period of both $\phi$ and $\theta$ perfectly overlap with each other. This is expected due to the fact that two pendulums that begin oscillating when released from the same state will never have a change in their relative positions. This means that the spring connecting the two is neither streched nor compressed throughout the system's oscillations. This is valid because the amplitude and period of oscillation never changes in this lossless system. \\
-Looking at the generic linearization equation,
-$$[m] \begin{bmatrix} \ddot{\theta}\\ \ddot{\phi} \end{bmatrix} +
-[k] \begin{bmatrix} \theta \\ \phi \end{bmatrix} =
-\begin{bmatrix} 0\\ 0 \end{bmatrix}$$
-We can see that the solution to the system when $\theta_0 = \phi_0$ will be of the form,
-$$-\omega^2[m] \begin{bmatrix} \theta\\ \phi \end{bmatrix} \cos(\omega t + \Psi)$$
-instead of the form,
-$$-\omega^2[m] \begin{bmatrix} \theta\\ \phi \end{bmatrix} \cos(\omega t + \Psi)
-+  [k] \begin{bmatrix} \theta \\ \phi \end{bmatrix} \cos(\omega t + \Psi)$$
-The fact that the equation takes the former's form supports our idea that this behavior makes physical sense when $\theta_0 = \phi_0$. For initial conditions where $\theta_0 \neq \phi_0$ or $\ddot{\theta_0} \neq \ddot{\phi_0}$ we find a non-zero $[k]$, which lines up with the physical concept that the bars will inconsistently oscillate. \\
-Lastly, in the special case where $\theta_0 = -\phi_0$, we can see a consistent oscillation in both variables where they remain equal and opposite to eachother. Once again, envisioning this system will show that this behavior is aligned with what we would expect from a physical system with these initial conditions and without losses. The behavior is plotted in Figure (\ref{fig:-15+15}).
+
 \section{Appendix} \label{appendix}
 
 \subsection{Attributions}
@@ -286,9 +261,9 @@ Lastly, in the special case where $\theta_0 = -\phi_0$, we can see a consistent 
 \onehalfspacing
 \begin{tabular}{ll}
 Jeffrey Chen & \\
-Thorne Wolfenbarger & Is just really really cool\\
+Thorne Wolfenbarger & \\
 Trey Dufrene & \\
-Joint Effort & MATLAB Coding, Solving EOM's
+Joint Effort &
 \end{tabular}
 \singlespacing
 

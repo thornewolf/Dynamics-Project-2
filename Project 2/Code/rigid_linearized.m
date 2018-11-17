@@ -71,12 +71,9 @@ theta_o = [pi/12 -pi/12 pi/36];
 
 % Mass Matrix
 m = [.25 0;0 .25];
-% Acceleration Matrix
-acc = [thetaddot;phiddot];
+
 % Stiffness Matrix
-k = [25 0;0 -25];
-% Displacement of Spring
-disp = [k*(ls-l);k*(ls-l)];
+k = [ 0;0 -25];
 
 [V,D] = eig(k,m)
 
@@ -85,7 +82,9 @@ eigvec2 = V(:,2)
 
 % w = sqrt(D)
 
-syms c1 c2 psi1 psi2 t
+syms c1 c2 psi1 psi2
+
+t = 0;
 
 eqn1(1) = pi/12 == c1*D(1,1)*cos(-10*t + psi1) + c2*D(1,2)*cos(0*t + psi2);
 eqn1(2) = pi/12 == c1*D(2,1)*cos(0*t + psi1) + c2*D(2,2)*cos(10*t + psi2);
