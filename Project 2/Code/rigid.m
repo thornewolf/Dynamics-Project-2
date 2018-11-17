@@ -57,31 +57,23 @@ eqn(6) = -(l/2)*(m*g*sin(phi)) + (Fs_tP)*(l) == (1/3)*m*(l^2)*phiddot;
 x = solve(eqn,[thetaddot,phiddot,An,At,Cn,Ct]);
 
 %----------------------- Linearization Equations -------------------------%
+% Linearize EOMs
 LinEOMs = subs([x.thetaddot,x.phiddot],...
     {str2sym('sin(theta)'),str2sym('cos(theta)'),str2sym('sin(phi)'),str2sym('cos(phi)') ...
     str2sym('sin(phi - theta)'),str2sym('thetadot^2'),str2sym('phidot^2')},...
     {'theta',1,'phi',1,str2sym('phi - theta'),0,0});
-
 LinEOMs = simplify(LinEOMs,'IgnoreAnalyticConstraints',true);
 
 % Stiffness Matrix (Coefficients of Theta and Phi)
-a = equationsToMatrix(LinEOMs,[theta phi]);
+a = equationsToMatrix(LinEOMs,[theta phi])
 % Substitute Constants
 a = subs(a,{'k','g','l','m'},{c.k,c.g,c.l,c.m});
 % Mass Matrix
 mass = [c.m 0;0 c.m];
-% 
+% Calculate Eigenvalues and Eigenvectors
 [V,D] = eig(mass\a);
-% 
-initialTP = [pi/36;pi/12];
-syms time c1 c2 c3 c4
-eqnL1 = initialTP == c1*V(:,1)*(cos(time*sqrt(D(1,1))) + c2*sin(time*sqrt(D(1,1)))) +... 
-        V(:,2)*(c3*cos(time*sqrt(D(2,2))) + c4*sin(time*sqrt(D(2,2))));
-eqnL2 = diff(eqnL1,time) == [0;0];
 
-eqnL1 = subs(eqnL1, time, 0);
-eqnL2 = subs(eqnL2, time, 0);
-consts = solve([eqnL1,eqnL2],[c1,c2,c3,c4]);
+syms time c1 c2 c3 c4
 %-------------------------------------------------------------------------%
 
 syms theta(t) thetadot(t) phi(t) phidot(t)
@@ -95,34 +87,45 @@ LinEOMs = subs(LinEOMs, {'theta', 'thetadot','phi', 'phidot'},...
 eom = odeFunction([thetadot; thetaEOM; phidot; phiEOM],...
     [theta; thetadot; phi; phidot],m,k,l,I,g);
 
-eomL = odeFunction([thetadot; LinEOMs(1); phidot; LinEOMs(2)],...
-    [theta; thetadot; phi; phidot],m,k,l,I,g);
-
 theta_o = [pi/12 -pi/12 pi/36];
 
+% Numerical Solution and Plots
 for i = 1:3
-    [T,S] = ode45(@(t,s)eom(t,s,c.m,c.k,c.l,c.I,c.g),linspace(0,10,1001),...
-        [theta_o(i),0,pi/12,0]);
-    [TL,SL] = ode45(@(t,s)eomL(t,s,c.m,c.k,c.l,c.I,c.g),linspace(0,10,1001),...
+    [T,S] = ode45(@(t,s)eom(t,s,c.m,c.k,c.l,c.I,c.g),linspace(0,10,10001),...
         [theta_o(i),0,pi/12,0]);
     figure
     hold on
-    grid on
-    title('Non-Linearized')
-    xlabel('Time, sec')
-    ylabel('Angular Position, rad')
+%     grid on
+%     xlabel('Time, sec')
+%     ylabel('Angular Position, rad')
     plot(T,S(:,1),'DisplayName', ['\theta_o = ' num2str(rad2deg(theta_o(i))) '^o'])
     plot(T,S(:,3),'DisplayName', '\phi_o = 15^o')
-    plot(TL,SL(:,1),'DisplayName', ['Linear \theta_o = ' num2str(rad2deg(theta_o(i))) '^o'])
-    plot(TL,SL(:,3),'DisplayName', 'Linear \phi_o = 15^o')
-    legend('show')
-    set(gcf, 'PaperPositionMode', 'manual');
-    set(gcf, 'PaperUnits', 'inches');
-    set(gcf, 'PaperPosition', [1 1 6 2.5]);
-    fig = gcf;
-    print(['BestFitFigure' num2str(i)],'-dpdf');
+%     legend('show','Orientation','horizontal','Location','northoutside')
+% % end
+
+% Analytical Linearized Solution and Plots
+% for i = 1:3
+    initialTP = [theta_o(i);pi/12];
+    eqnL1 = initialTP == c1*V(:,1)*(cos(time*sqrt(abs(D(1,1)))) + c2*sin(time*sqrt(abs(D(1,1))))) +... 
+            V(:,2)*(c3*cos(time*sqrt(abs(D(2,2)))) + c4*sin(time*sqrt(abs(D(2,2)))));
+    eqnL2 = diff(eqnL1,time) == [0;0];
+    eqnL1 = subs(eqnL1, time, 0);
+    eqnL2 = subs(eqnL2, time, 0);
+    consts = solve([eqnL1,eqnL2],[c1,c2,c3,c4]);
+    timev = linspace(0,10,1001);
+    thetaLinearEOM = consts.c1*V(1,1)*(cos(timev.*sqrt(abs(D(1,1)))) + consts.c2*sin(timev.*sqrt(abs(D(1,1))))) +... 
+            V(2,1)*(consts.c3*cos(timev.*sqrt(abs(D(2,2)))) + consts.c4*sin(timev.*sqrt(abs(D(2,2)))));
+    phiLinearEOM = consts.c1*V(1,2)*(cos(timev.*sqrt(abs(D(1,1)))) + consts.c2*sin(timev.*sqrt(abs(D(1,1))))) +... 
+        V(2,2)*(consts.c3*cos(timev.*sqrt(abs(D(2,2)))) + consts.c4*sin(timev.*sqrt(abs(D(2,2)))));
+%     figure
+%     hold on
+    grid on
+    xlabel('Time, sec')
+    ylabel('Angular Position, rad')
+    plot(timev,thetaLinearEOM,'DisplayName', ['Analytical \theta_o = ' num2str(rad2deg(theta_o(i))) '^o'])
+    plot(timev,phiLinearEOM,'DisplayName', 'Analytical \phi_o = 15^o')
+    legend('show','Orientation','horizontal','Location','northoutside')
 end
-% 
 % 
 % % Checking EOM Units
 % u = symunit;
@@ -143,4 +146,13 @@ end
 % 
 % eqn = subs(eqn);
 % unitCheck = checkUnits(eqn)
-
+% 
+% 
+% 
+% 
+% 
+% set(gcf, 'PaperPositionMode', 'manual');
+% set(gcf, 'PaperUnits', 'inches');
+% set(gcf, 'PaperPosition', [1 1 6 2.5]);
+% fig = gcf;
+% print(['Linearized' num2str(i)],'-dpdf');
